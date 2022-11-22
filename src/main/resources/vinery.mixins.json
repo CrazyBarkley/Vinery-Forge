@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "daniking.vinery.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "vinery.refmap.json",
+  "mixins": [
+    "BlockMixin",
+    "BoneMealItemMixin",
+    "FoxEntityEatSweetBerriesGoalMixin",
+    "WanderingTraderManagerMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
