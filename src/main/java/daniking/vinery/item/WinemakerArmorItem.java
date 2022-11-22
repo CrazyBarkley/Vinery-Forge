@@ -32,10 +32,10 @@ public class WinemakerArmorItem extends ArmorItem {
 		ItemStack boots = player.getItemBySlot(EquipmentSlot.FEET);
 		tooltip.add(Component.nullToEmpty(""));
 		tooltip.add(Component.nullToEmpty(ChatFormatting.AQUA + I18n.get("vinery.tooltip.winemaker_armor")));
-		tooltip.add(Component.nullToEmpty((helmet != null && helmet.getItem() instanceof WinemakerArmorItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.STRAW_HAT.getDescription().getString() + "]"));
-		tooltip.add(Component.nullToEmpty((chestplate != null && chestplate.getItem() instanceof WinemakerArmorItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.VINEMAKER_APRON.getDescription().getString() + "]"));
-		tooltip.add(Component.nullToEmpty((leggings != null && leggings.getItem() instanceof WinemakerArmorItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.VINEMAKER_LEGGINGS.getDescription().getString() + "]"));
-		tooltip.add(Component.nullToEmpty((boots != null && boots.getItem() instanceof WinemakerArmorItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.VINEMAKER_BOOTS.getDescription().getString() + "]"));
+		tooltip.add(Component.nullToEmpty((helmet != null && helmet.getItem() instanceof WinemakerArmorItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.STRAW_HAT.get().getDescription().getString() + "]"));
+		tooltip.add(Component.nullToEmpty((chestplate != null && chestplate.getItem() instanceof WinemakerArmorItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.VINEMAKER_APRON.get().getDescription().getString() + "]"));
+		tooltip.add(Component.nullToEmpty((leggings != null && leggings.getItem() instanceof WinemakerArmorItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.VINEMAKER_LEGGINGS.get().getDescription().getString() + "]"));
+		tooltip.add(Component.nullToEmpty((boots != null && boots.getItem() instanceof WinemakerArmorItem ? ChatFormatting.GREEN.toString() : ChatFormatting.GRAY.toString()) + "- [" + ObjectRegistry.VINEMAKER_BOOTS.get().getDescription().getString() + "]"));
 		tooltip.add(Component.nullToEmpty(""));
 		tooltip.add(Component.nullToEmpty(ChatFormatting.GRAY + I18n.get("vinery.tooltip.winemaker_armor2")));
 		tooltip.add(Component.nullToEmpty(((helmet != null && helmet.getItem() instanceof WinemakerArmorItem &&

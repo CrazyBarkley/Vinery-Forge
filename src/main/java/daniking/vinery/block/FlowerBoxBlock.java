@@ -138,7 +138,7 @@ public class FlowerBoxBlock extends Block {
 					player.drop(itemStack2, false);
 				}
 				
-				world.setBlock(pos, ObjectRegistry.FLOWER_BOX.defaultBlockState().setValue(SIDE, state.getValue(SIDE)).setValue(FACING, state.getValue(FACING)), 3);
+				world.setBlock(pos, ObjectRegistry.FLOWER_BOX.get().defaultBlockState().setValue(SIDE, state.getValue(SIDE)).setValue(FACING, state.getValue(FACING)), 3);
 			}
 			
 			world.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);

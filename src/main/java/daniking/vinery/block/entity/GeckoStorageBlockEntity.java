@@ -22,7 +22,7 @@ public class GeckoStorageBlockEntity extends BlockEntity implements Container, I
     private NonNullList<ItemStack> inventory;
 
     public GeckoStorageBlockEntity(BlockPos pos, BlockState state) {
-        super(VineryBlockEntityTypes.WINE_RACK_GECKO_ENTITY, pos, state);
+        super(VineryBlockEntityTypes.WINE_RACK_GECKO_ENTITY.get(), pos, state);
         this.inventory = NonNullList.withSize(18, ItemStack.EMPTY);
     }
 

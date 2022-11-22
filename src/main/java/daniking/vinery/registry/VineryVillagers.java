@@ -29,7 +29,7 @@ public class VineryVillagers {
     public static final DeferredRegister<VillagerProfession> VILLAGER_PROFESSIONS = DeferredRegister.create(ForgeRegistries.VILLAGER_PROFESSIONS, Vinery.MODID);
 
     public static final RegistryObject<PoiType> WINEMAKER_POI = POI_TYPES.register("winemaker_poi", () ->
-            new PoiType(ImmutableSet.copyOf(ObjectRegistry.WINE_PRESS.getStateDefinition().getPossibleStates()), 1, 1));
+            new PoiType(ImmutableSet.copyOf(ObjectRegistry.WINE_PRESS.get().getStateDefinition().getPossibleStates()), 1, 1));
 
     public static final RegistryObject<VillagerProfession> WINEMAKER = VILLAGER_PROFESSIONS.register("winemaker", () ->
             new VillagerProfession("winemaker", x -> x.get() == WINEMAKER_POI.get(), x -> x.get() == WINEMAKER_POI.get(), ImmutableSet.of(), ImmutableSet.of(), SoundEvents.VILLAGER_WORK_FARMER));

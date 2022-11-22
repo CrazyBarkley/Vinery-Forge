@@ -128,7 +128,7 @@ public class CookingPotBlock extends Block implements EntityBlock {
             double e = pos.getY() + 0.3;
             double f = (double)pos.getZ() + 1.0;
             if (random.nextDouble() < 0.3) {
-                world.playLocalSound(d, e, f, VinerySoundEvents.BLOCK_COOKING_POT_JUICE_BOILING, SoundSource.BLOCKS, 1.0F, 1.0F, false);
+                world.playLocalSound(d, e, f, VinerySoundEvents.BLOCK_COOKING_POT_JUICE_BOILING.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
             }
             Direction direction = state.getValue(FACING);
             Direction.Axis axis = direction.getAxis();

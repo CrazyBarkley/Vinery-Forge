@@ -16,45 +16,53 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = Vinery.MODID)
+
 public class ModEvents {
 
-    @SubscribeEvent
-    public static void addCustomTrades(VillagerTradesEvent event){
-        if(event.getType().equals(VineryVillagers.WINEMAKER.get())){
-            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+    @Mod.EventBusSubscriber(modid = Vinery.MODID)
+    public static class ForgeEvents {
+        @SubscribeEvent
+        public static void addCustomTrades(VillagerTradesEvent event){
+            if(event.getType().equals(VineryVillagers.WINEMAKER.get())){
+                Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
 
-            List<VillagerTrades.ItemListing> level1 = trades.get(1);
-            level1.add(new VineryVillagers.BuyForOneEmeraldFactory(ObjectRegistry.RED_GRAPE, 15, 4, 5));
-            level1.add(new VineryVillagers.BuyForOneEmeraldFactory(ObjectRegistry.WHITE_GRAPE, 15, 4, 5));
-            level1.add(new VineryVillagers.SellItemFactory(ObjectRegistry.RED_GRAPE_SEEDS, 2, 1, 5));
-            level1.add(new VineryVillagers.SellItemFactory(ObjectRegistry.WHITE_GRAPE_SEEDS, 2, 1, 5));
+                List<VillagerTrades.ItemListing> level1 = trades.get(1);
+                level1.add(new VineryVillagers.BuyForOneEmeraldFactory(ObjectRegistry.RED_GRAPE.get(), 15, 4, 5));
+                level1.add(new VineryVillagers.BuyForOneEmeraldFactory(ObjectRegistry.WHITE_GRAPE.get(), 15, 4, 5));
+                level1.add(new VineryVillagers.SellItemFactory(ObjectRegistry.RED_GRAPE_SEEDS.get(), 2, 1, 5));
+                level1.add(new VineryVillagers.SellItemFactory(ObjectRegistry.WHITE_GRAPE_SEEDS.get(), 2, 1, 5));
 
-            List<VillagerTrades.ItemListing> level2 = trades.get(2);
-            level2.add(new VineryVillagers.SellItemFactory(ObjectRegistry.WINE_BOTTLE, 1, 2, 7));
+                List<VillagerTrades.ItemListing> level2 = trades.get(2);
+                level2.add(new VineryVillagers.SellItemFactory(ObjectRegistry.WINE_BOTTLE.get(), 1, 2, 7));
 
-            List<VillagerTrades.ItemListing> level3 = trades.get(3);
-            level3.add(new VineryVillagers.SellItemFactory(ObjectRegistry.COOKING_POT, 3, 1, 10));
-            level3.add(new VineryVillagers.SellItemFactory(ObjectRegistry.FLOWER_BOX, 3, 1, 10));
-            level3.add(new VineryVillagers.SellItemFactory(ObjectRegistry.WHITE_GRAPE_CRATE, 7, 1, 10));
-            level3.add(new VineryVillagers.SellItemFactory(ObjectRegistry.RED_GRAPE_CRATE, 7, 1, 10));
+                List<VillagerTrades.ItemListing> level3 = trades.get(3);
+                level3.add(new VineryVillagers.SellItemFactory(ObjectRegistry.COOKING_POT.get(), 3, 1, 10));
+                level3.add(new VineryVillagers.SellItemFactory(ObjectRegistry.FLOWER_BOX.get(), 3, 1, 10));
+                level3.add(new VineryVillagers.SellItemFactory(ObjectRegistry.WHITE_GRAPE_CRATE.get(), 7, 1, 10));
+                level3.add(new VineryVillagers.SellItemFactory(ObjectRegistry.RED_GRAPE_CRATE.get(), 7, 1, 10));
 
-            List<VillagerTrades.ItemListing> level4 = trades.get(4);
-            level4.add(new VineryVillagers.SellItemFactory(ObjectRegistry.BASKET, 4, 1, 10));
-            level4.add(new VineryVillagers.SellItemFactory(ObjectRegistry.FLOWER_POT, 5, 1, 10));
-            level4.add(new VineryVillagers.SellItemFactory(ObjectRegistry.WINDOW, 12, 1, 10));
-            level4.add(new VineryVillagers.SellItemFactory(ObjectRegistry.CHERRY_BEAM, 6, 1, 10));
+                List<VillagerTrades.ItemListing> level4 = trades.get(4);
+                level4.add(new VineryVillagers.SellItemFactory(ObjectRegistry.BASKET.get(), 4, 1, 10));
+                level4.add(new VineryVillagers.SellItemFactory(ObjectRegistry.FLOWER_POT.get(), 5, 1, 10));
+                level4.add(new VineryVillagers.SellItemFactory(ObjectRegistry.WINDOW.get(), 12, 1, 10));
+                level4.add(new VineryVillagers.SellItemFactory(ObjectRegistry.CHERRY_BEAM.get(), 6, 1, 10));
 
-            List<VillagerTrades.ItemListing> level5 = trades.get(5);
-            level5.add(new VineryVillagers.SellItemFactory(ObjectRegistry.WINE_BOX, 10, 1, 10));
-            level5.add(new VineryVillagers.SellItemFactory(ObjectRegistry.KING_DANIS_WINE, 4, 1, 10));
-            level5.add(new VineryVillagers.SellItemFactory(ObjectRegistry.GLOVES, 12, 1, 15));
+                List<VillagerTrades.ItemListing> level5 = trades.get(5);
+                level5.add(new VineryVillagers.SellItemFactory(ObjectRegistry.WINE_BOX.get(), 10, 1, 10));
+                level5.add(new VineryVillagers.SellItemFactory(ObjectRegistry.KING_DANIS_WINE.get(), 4, 1, 10));
+                level5.add(new VineryVillagers.SellItemFactory(ObjectRegistry.GLOVES.get(), 12, 1, 15));
+            }
         }
     }
 
-    @SubscribeEvent
-    public static void initializeAttributes(EntityAttributeCreationEvent event) {
-        event.put(VineryEntites.MULE, Llama.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.2f).build());
-        event.put(VineryEntites.WANDERING_WINEMAKER, WanderingWinemakerEntity.createMobAttributes().build());
+    @Mod.EventBusSubscriber(modid = Vinery.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class ModEventBusEvents {
+        @SubscribeEvent
+        public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
+            event.put(VineryEntites.MULE.get(), Llama.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.2f).build());
+            event.put(VineryEntites.WANDERING_WINEMAKER.get(), WanderingWinemakerEntity.createMobAttributes().build());
+        }
     }
+
+
 }

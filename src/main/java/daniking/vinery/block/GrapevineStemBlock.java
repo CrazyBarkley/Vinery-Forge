@@ -82,7 +82,7 @@ public class GrapevineStemBlock extends Block implements SimpleWaterloggedBlock,
     private void dropGrapes(Level world, BlockState state, BlockPos pos) {
         final int x = 1 + world.random.nextInt(this.isMature(state) ? 2 : 1);
         final int bonus = this.isMature(state) ? 2 : 1;
-        popResource(world, pos, new ItemStack(state.getValue(TYPE) == GrapevineType.RED ? ObjectRegistry.RED_GRAPE : ObjectRegistry.WHITE_GRAPE, x + bonus));
+        popResource(world, pos, new ItemStack(state.getValue(TYPE) == GrapevineType.RED ? ObjectRegistry.RED_GRAPE.get() : ObjectRegistry.WHITE_GRAPE.get(), x + bonus));
         world.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + world.random.nextFloat() * 0.4F);
         world.setBlock(pos, state.setValue(AGE, 2), 2);
     }
@@ -109,7 +109,7 @@ public class GrapevineStemBlock extends Block implements SimpleWaterloggedBlock,
                 }
                 final BlockPos offset = belowPos.relative(dir);
                 if (world.getBlockState(offset).isAir()) {
-                    world.setBlock(offset, ObjectRegistry.GRAPEVINE_LEAVES.defaultBlockState().setValue(BlockStateProperties.PERSISTENT, true), Block.UPDATE_CLIENTS);
+                    world.setBlock(offset, ObjectRegistry.GRAPEVINE_LEAVES.get().defaultBlockState().setValue(BlockStateProperties.PERSISTENT, true), Block.UPDATE_CLIENTS);
                     world.setBlockAndUpdate(pos, state.setValue(HAS_GROWTH_LEAVES, true));
                 }
             }

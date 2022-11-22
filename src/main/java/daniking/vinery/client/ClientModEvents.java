@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
-//@Mod.EventBusSubscriber(modid = Vinery.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = Vinery.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientModEvents {
 
     @SubscribeEvent
@@ -72,20 +72,20 @@ public class ClientModEvents {
 
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event){
-        event.registerBlockEntityRenderer(VineryBlockEntityTypes.WINE_RACK_GECKO_ENTITY,
+        event.registerBlockEntityRenderer(VineryBlockEntityTypes.WINE_RACK_GECKO_ENTITY.get(),
                 (BlockEntityRendererProvider.Context rendererDispatcherIn) -> new WineRackRenderer());
-        event.registerEntityRenderer(VineryEntites.MULE, mgr -> new SimpleGeoRenderer<>(mgr, Vinery.MODID, "wandering_mule"));
-        event.registerEntityRenderer(VineryEntites.WANDERING_WINEMAKER, WanderingWinemakerRenderer::new);
-        event.registerEntityRenderer(VineryBlockEntityTypes.CHAIR, ChairRenderer::new);
+        event.registerEntityRenderer(VineryEntites.MULE.get(), mgr -> new SimpleGeoRenderer<>(mgr, Vinery.MODID, "wandering_mule"));
+        event.registerEntityRenderer(VineryEntites.WANDERING_WINEMAKER.get(), WanderingWinemakerRenderer::new);
+        event.registerEntityRenderer(VineryBlockEntityTypes.CHAIR.get(), ChairRenderer::new);
 
         GeoArmorRenderer.registerArmorRenderer(StrawHatItem.class, new StrawHatRenderer());
     }
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
-        MenuScreens.register(VineryScreenHandlerTypes.STOVE_GUI_HANDLER, StoveGui::new);
-        MenuScreens.register(VineryScreenHandlerTypes.FERMENTATION_BARREL_GUI_HANDLER, FermentationBarrelGui::new);
-        MenuScreens.register(VineryScreenHandlerTypes.COOKING_POT_SCREEN_HANDLER, CookingPotGui::new);
+        MenuScreens.register(VineryScreenHandlerTypes.STOVE_GUI_HANDLER.get(), StoveGui::new);
+        MenuScreens.register(VineryScreenHandlerTypes.FERMENTATION_BARREL_GUI_HANDLER.get(), FermentationBarrelGui::new);
+        MenuScreens.register(VineryScreenHandlerTypes.COOKING_POT_SCREEN_HANDLER.get(), CookingPotGui::new);
 
         //TerraformBoatClientHelper.registerModelLayers(new VineryIdentifier("cherry"));
     }

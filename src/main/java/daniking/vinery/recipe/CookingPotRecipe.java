@@ -62,12 +62,12 @@ public class CookingPotRecipe implements Recipe<Container> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return VineryRecipeTypes.COOKING_POT_RECIPE_SERIALIZER;
+        return VineryRecipeTypes.COOKING_POT_RECIPE_SERIALIZER.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return VineryRecipeTypes.COOKING_POT_RECIPE_TYPE;
+        return VineryRecipeTypes.COOKING_POT_RECIPE_TYPE.get();
     }
 
     @Override

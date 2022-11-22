@@ -68,8 +68,8 @@ public abstract class FoxEntityEatSweetBerriesGoalMixin extends MoveToBlockGoal 
 
     private static ItemStack getGrapeFor(GrapevineType type) {
         return switch (type) {
-            case RED -> new ItemStack(/*ObjectRegistry.RED_GRAPE_BUSH*/ ObjectRegistry.RED_GRAPE);
-            case WHITE -> new ItemStack(ObjectRegistry.WHITE_GRAPE);
+            case RED -> new ItemStack(ObjectRegistry.RED_GRAPE.get());
+            case WHITE -> new ItemStack(ObjectRegistry.WHITE_GRAPE.get());
         };
     }
 }

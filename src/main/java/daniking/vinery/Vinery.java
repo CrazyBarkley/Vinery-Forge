@@ -1,7 +1,6 @@
 package daniking.vinery;
 
 import daniking.vinery.registry.*;
-import dev.architectury.registry.forge.CreativeTabRegistryImpl;
 import net.minecraft.core.Registry;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
@@ -13,6 +12,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,22 +22,30 @@ public class Vinery{
     public static final String MODID = "vinery";
 
     public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
-    public static final CreativeModeTab CREATIVE_TAB = CreativeTabRegistryImpl.create(new VineryIdentifier("creative_tab"), () -> new ItemStack(ObjectRegistry.RED_GRAPE));
+    public static final CreativeModeTab CREATIVE_TAB = new CreativeModeTab(new VineryIdentifier("creative_tab").toString()) {
+        @Override
+        public @NotNull ItemStack makeIcon() {
+            return new ItemStack(ObjectRegistry.RED_GRAPE.get());
+        }
+    };
     public static final TagKey<Block> ALLOWS_COOKING_ON_POT = TagKey.create(Registry.BLOCK_REGISTRY, new VineryIdentifier("allows_cooking_on_pot"));
     public static final TagKey<Block> CAN_NOT_CONNECT = TagKey.create(Registry.BLOCK_REGISTRY, new VineryIdentifier("can_not_connect"));
     public static final TagKey<Item> CHERRY_LOGS = TagKey.create(Registry.ITEM_REGISTRY, new VineryIdentifier("cherry_logs"));
     public static final TagKey<Block> WINE_RACK = TagKey.create(Registry.BLOCK_REGISTRY, new VineryIdentifier("wine_racks"));
 
     public Vinery() {
+        Vinery.LOGGER.error("mod head");
+
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        VineryEntites.register(modEventBus);
         ObjectRegistry.register(modEventBus);
         VineryBlockEntityTypes.register(modEventBus);
         VineryScreenHandlerTypes.register(modEventBus);
         VineryRecipeTypes.register(modEventBus);
         VinerySoundEvents.register(modEventBus);
         VineryVillagers.register(modEventBus);
-        VineryEntites.register(modEventBus);
+
 
         modEventBus.addListener(this::commonSetup);
 

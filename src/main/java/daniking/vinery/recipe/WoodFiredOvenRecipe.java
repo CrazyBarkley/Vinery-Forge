@@ -74,12 +74,12 @@ public class WoodFiredOvenRecipe implements Recipe<Container> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return VineryRecipeTypes.WOOD_FIRED_OVEN_RECIPE_SERIALIZER;
+        return VineryRecipeTypes.WOOD_FIRED_OVEN_RECIPE_SERIALIZER.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return VineryRecipeTypes.WOOD_FIRED_OVEN_RECIPE_TYPE;
+        return VineryRecipeTypes.WOOD_FIRED_OVEN_RECIPE_TYPE.get();
     }
 
     @Override

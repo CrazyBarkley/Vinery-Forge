@@ -24,11 +24,11 @@ public class FermentationBarrelGuiHandler extends AbstractContainerMenu  {
         this(syncId, playerInventory, new SimpleContainer(6), new SimpleContainerData(2));
     }
     public FermentationBarrelGuiHandler(int syncId, Inventory playerInventory, Container inventory, ContainerData propertyDelegate) {
-        super(VineryScreenHandlerTypes.FERMENTATION_BARREL_GUI_HANDLER, syncId);
+        super(VineryScreenHandlerTypes.FERMENTATION_BARREL_GUI_HANDLER.get(), syncId);
 
         // Wine input
         this.addSlot(new ExtendedSlot(inventory, 0, 63, 50, stack -> {
-            return stack.is(Item.byBlock(ObjectRegistry.WINE_BOTTLE));
+            return stack.is(Item.byBlock(ObjectRegistry.WINE_BOTTLE.get()));
         }));
         // Output
         this.addSlot(new StoveOutputSlot(playerInventory.player, inventory, 1, 125,  35));

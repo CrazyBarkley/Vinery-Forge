@@ -73,12 +73,12 @@ public class FermentationBarrelRecipe implements Recipe<Container> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return VineryRecipeTypes.FERMENTATION_BARREL_RECIPE_SERIALIZER;
+        return VineryRecipeTypes.FERMENTATION_BARREL_RECIPE_SERIALIZER.get();
     }
 
     @Override
     public RecipeType<?> getType() {
-        return VineryRecipeTypes.FERMENTATION_BARREL_RECIPE_TYPE;
+        return VineryRecipeTypes.FERMENTATION_BARREL_RECIPE_TYPE.get();
     }
 
     @Override

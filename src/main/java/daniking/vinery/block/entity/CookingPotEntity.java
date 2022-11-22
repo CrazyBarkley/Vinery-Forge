@@ -44,7 +44,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 	private final ContainerData delegate;
 	
 	public CookingPotEntity(BlockPos pos, BlockState state) {
-		super(VineryBlockEntityTypes.COOKING_POT_BLOCK_ENTITY, pos, state);
+		super(VineryBlockEntityTypes.COOKING_POT_BLOCK_ENTITY.get(), pos, state);
 		this.inventory = NonNullList.withSize(MAX_CAPACITY, ItemStack.EMPTY);
 		this.delegate = new ContainerData() {
 			@Override
@@ -170,7 +170,7 @@ public class CookingPotEntity extends BlockEntity implements BlockEntityTicker<C
 		if (!this.isBeingBurned)
 			return;
 		boolean dirty = false;
-		final var recipe = world.getRecipeManager().getRecipeFor(VineryRecipeTypes.COOKING_POT_RECIPE_TYPE, this, world).orElse(null);
+		final var recipe = world.getRecipeManager().getRecipeFor(VineryRecipeTypes.COOKING_POT_RECIPE_TYPE.get(), this, world).orElse(null);
 		boolean canCraft = canCraft(recipe);
 		if (canCraft) {
 			++this.cookingTime;

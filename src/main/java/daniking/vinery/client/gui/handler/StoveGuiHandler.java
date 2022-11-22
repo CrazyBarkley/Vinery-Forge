@@ -30,7 +30,7 @@ public class StoveGuiHandler extends AbstractContainerMenu {
     }
 
     public StoveGuiHandler(int syncId, Inventory playerInventory, Container inventory, ContainerData delegate) {
-        super(VineryScreenHandlerTypes.STOVE_GUI_HANDLER, syncId);
+        super(VineryScreenHandlerTypes.STOVE_GUI_HANDLER.get(), syncId);
         this.inventory = inventory;
         this.world = playerInventory.player.level;
 
@@ -120,7 +120,7 @@ public class StoveGuiHandler extends AbstractContainerMenu {
     }
 
     private boolean isIngredient(ItemStack stack) {
-        return this.world.getRecipeManager().getAllRecipesFor(VineryRecipeTypes.WOOD_FIRED_OVEN_RECIPE_TYPE).stream().anyMatch(recipe -> recipe.getInputs().stream().anyMatch(x -> x.test(stack)));
+        return this.world.getRecipeManager().getAllRecipesFor(VineryRecipeTypes.WOOD_FIRED_OVEN_RECIPE_TYPE.get()).stream().anyMatch(recipe -> recipe.getInputs().stream().anyMatch(x -> x.test(stack)));
     }
     private static boolean isFuel(ItemStack stack) {
         return AbstractFurnaceBlockEntity.isFuel(stack);

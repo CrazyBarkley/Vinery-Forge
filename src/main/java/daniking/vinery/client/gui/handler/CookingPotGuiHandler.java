@@ -27,7 +27,7 @@ public class CookingPotGuiHandler extends AbstractContainerMenu {
     }
 
     public CookingPotGuiHandler(int syncId, Inventory playerInventory, Container inventory, ContainerData propertyDelegate) {
-        super(VineryScreenHandlerTypes.COOKING_POT_SCREEN_HANDLER, syncId);
+        super(VineryScreenHandlerTypes.COOKING_POT_SCREEN_HANDLER.get(), syncId);
         buildBlockEntityContainer(inventory);
         buildPlayerContainer(playerInventory);
         this.world = playerInventory.player.getLevel();
@@ -112,7 +112,7 @@ public class CookingPotGuiHandler extends AbstractContainerMenu {
     }
 
     private Stream<CookingPotRecipe> recipeStream() {
-        return this.world.getRecipeManager().getAllRecipesFor(VineryRecipeTypes.COOKING_POT_RECIPE_TYPE).stream();
+        return this.world.getRecipeManager().getAllRecipesFor(VineryRecipeTypes.COOKING_POT_RECIPE_TYPE.get()).stream();
     }
     private boolean isItemContainer(ItemStack stack) {
         return recipeStream().anyMatch(cookingPotRecipe -> cookingPotRecipe.getContainer().is(stack.getItem()));

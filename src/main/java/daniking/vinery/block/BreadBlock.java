@@ -51,7 +51,7 @@ public class BreadBlock extends FacingBlock {
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getItemInHand(hand);
         Item item = itemStack.getItem();
-        if (itemStack.is(ObjectRegistry.CHERRY_JAM.asItem()) && !state.getValue(JAM)) {
+        if (itemStack.is(ObjectRegistry.CHERRY_JAM.get().asItem()) && !state.getValue(JAM)) {
             if (!player.isCreative()) {
                 itemStack.shrink(1);
             }
