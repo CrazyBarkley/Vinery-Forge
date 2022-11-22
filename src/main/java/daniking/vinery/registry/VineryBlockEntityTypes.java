@@ -39,10 +39,4 @@ public class VineryBlockEntityTypes {
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITY_TYPE.register(eventBus);
     }
-
-
-
-    public static void init() {
-
-    }
 }

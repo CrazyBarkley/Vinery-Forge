@@ -31,14 +31,13 @@ public class Vinery{
     public Vinery() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-
         ObjectRegistry.register(modEventBus);
-        VineryVillagers.register(modEventBus);
         VineryBlockEntityTypes.register(modEventBus);
-        VineryEntites.register(modEventBus);
-        VineryRecipeTypes.register(modEventBus);
         VineryScreenHandlerTypes.register(modEventBus);
+        VineryRecipeTypes.register(modEventBus);
         VinerySoundEvents.register(modEventBus);
+        VineryVillagers.register(modEventBus);
+        VineryEntites.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -47,11 +46,13 @@ public class Vinery{
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(VineryVillagers::registerPOIs);
+        event.enqueueWork(() ->{
+            VineryVillagers.registerPOIs();
+        });
     }
-
+    /*
     public void onInitialize() {
-        /*
+
         ObjectRegistry.init();
         VineryBlockEntityTypes.init();
         AdditionalHouses.registerNewVillageStructures();
@@ -68,9 +69,8 @@ public class Vinery{
         VinerySoundEvents.init();
         VineryVillagers.init();
         VineryEntites.init();
-
-         */
-
     }
+
+     */
 }
 

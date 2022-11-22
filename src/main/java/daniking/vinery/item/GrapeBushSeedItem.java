@@ -1,4 +1,4 @@
-package daniking.vinery;
+package daniking.vinery.item;
 
 import daniking.vinery.util.GrapevineType;
 import net.minecraft.world.item.ItemNameBlockItem;

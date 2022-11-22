@@ -13,8 +13,8 @@ import java.util.Map;
 
 public class WanderingWinemakerEntity extends WanderingTrader {
 	public static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(Map.of(1, new VillagerTrades.ItemListing[] {
-			//new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_GRAPE_SEEDS, 1, 1, 8, 1),
-			//new VillagerTrades.ItemsForEmeralds(ObjectRegistry.WHITE_GRAPE_SEEDS, 1, 1, 8, 1),
+			new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_GRAPE_SEEDS, 1, 1, 8, 1),
+			new VillagerTrades.ItemsForEmeralds(ObjectRegistry.WHITE_GRAPE_SEEDS, 1, 1, 8, 1),
 			//new VillagerTrades.ItemsForEmeralds(ObjectRegistry.CHERRY_SAPLING, 3, 1, 8, 1),
 			//new VillagerTrades.ItemsForEmeralds(ObjectRegistry.OLD_CHERRY_SAPLING, 5, 1, 8, 1),
 			new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_GRAPE, 2, 1, 8, 1),

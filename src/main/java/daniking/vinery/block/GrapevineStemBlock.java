@@ -1,6 +1,6 @@
 package daniking.vinery.block;
 
-import daniking.vinery.GrapeBushSeedItem;
+import daniking.vinery.item.GrapeBushSeedItem;
 import daniking.vinery.registry.ObjectRegistry;
 import daniking.vinery.util.GrapevineType;
 import net.minecraft.ChatFormatting;

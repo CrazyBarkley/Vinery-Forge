@@ -1,5 +1,6 @@
 package daniking.vinery.registry;
 
+import daniking.vinery.item.GrapeBushSeedItem;
 import daniking.vinery.Vinery;
 import daniking.vinery.VineryIdentifier;
 import daniking.vinery.block.FlowerPotBlock;
@@ -38,13 +39,13 @@ public class ObjectRegistry {
 
 
     // Red Grapes
-    //public static final Block RED_GRAPE_BUSH = register("red_grape_bush", new GrapeBush(getBushSettings(), GrapevineType.RED), false);
-    //public static final Item RED_GRAPE_SEEDS = register("red_grape_seeds", new GrapeBushSeedItem(RED_GRAPE_BUSH, getSettings(), GrapevineType.RED));
+    public static final Block RED_GRAPE_BUSH = register("red_grape_bush", new GrapeBush(getBushSettings(), GrapevineType.RED), false);
+    public static final Item RED_GRAPE_SEEDS = register("red_grape_seeds", new GrapeBushSeedItem(RED_GRAPE_BUSH, getSettings(), GrapevineType.RED));
 
     public static final Item RED_GRAPE = register("red_grape", new GrapeItem(getSettings().food(Foods.SWEET_BERRIES), GrapevineType.RED));
 
-    //public static final Block WHITE_GRAPE_BUSH = register("white_grape_bush", new GrapeBush(getBushSettings(), GrapevineType.WHITE), false);
-    //public static final Item WHITE_GRAPE_SEEDS = register("white_grape_seeds", new GrapeBushSeedItem(WHITE_GRAPE_BUSH, getSettings(), GrapevineType.WHITE));
+    public static final Block WHITE_GRAPE_BUSH = register("white_grape_bush", new GrapeBush(getBushSettings(), GrapevineType.WHITE), false);
+    public static final Item WHITE_GRAPE_SEEDS = register("white_grape_seeds", new GrapeBushSeedItem(WHITE_GRAPE_BUSH, getSettings(), GrapevineType.WHITE));
     public static final Item WHITE_GRAPE = register("white_grape", new GrapeItem(getSettings().food(Foods.SWEET_BERRIES), GrapevineType.WHITE));
 
     public static final Item CHERRY = register("cherry", new CherryItem(getSettings().food(Foods.COOKIE)));

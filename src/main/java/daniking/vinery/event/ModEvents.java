@@ -27,8 +27,8 @@ public class ModEvents {
             List<VillagerTrades.ItemListing> level1 = trades.get(1);
             level1.add(new VineryVillagers.BuyForOneEmeraldFactory(ObjectRegistry.RED_GRAPE, 15, 4, 5));
             level1.add(new VineryVillagers.BuyForOneEmeraldFactory(ObjectRegistry.WHITE_GRAPE, 15, 4, 5));
-            //level1.add(new VineryVillagers.SellItemFactory(ObjectRegistry.RED_GRAPE_SEEDS, 2, 1, 5));
-            //level1.add(new VineryVillagers.SellItemFactory(ObjectRegistry.WHITE_GRAPE_SEEDS, 2, 1, 5));
+            level1.add(new VineryVillagers.SellItemFactory(ObjectRegistry.RED_GRAPE_SEEDS, 2, 1, 5));
+            level1.add(new VineryVillagers.SellItemFactory(ObjectRegistry.WHITE_GRAPE_SEEDS, 2, 1, 5));
 
             List<VillagerTrades.ItemListing> level2 = trades.get(2);
             level2.add(new VineryVillagers.SellItemFactory(ObjectRegistry.WINE_BOTTLE, 1, 2, 7));
