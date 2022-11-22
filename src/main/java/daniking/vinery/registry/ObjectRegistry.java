@@ -25,7 +25,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -207,7 +206,7 @@ public class ObjectRegistry {
     }
 
     private static <T extends Block> RegistryObject<T> register(String path, Supplier<T> block) {
-        ITEMS.register(path, () -> new BlockItem(block.get(), getSettings()));
+        //ITEMS.register(path, () -> new BlockItem(block.get(), getSettings()));
         return BLOCKS.register(path, block);
     }
 
@@ -220,15 +219,15 @@ public class ObjectRegistry {
     }
 
     private static <T extends Block> RegistryObject<T> registerWine(String path, Supplier<T> block, MobEffect effect) {
-        ITEMS.register(path, () -> new DrinkBlockItem(block.get(), new Item.Properties().tab(Vinery.CREATIVE_TAB).food(wineFoodComponent(effect))));
+        //ITEMS.register(path, () -> new DrinkBlockItem(block.get(), new Item.Properties().tab(Vinery.CREATIVE_TAB).food(wineFoodComponent(effect))));
         return registerWithoutItem(path, block);
     }
 
     private static <T extends Block> RegistryObject<T> registerBigWine(String path, Supplier<T> block, MobEffect effect) {
-        ITEMS.register(path, () -> new DrinkBlockBigItem(block.get(), new Item.Properties().tab(Vinery.CREATIVE_TAB).food(wineFoodComponent(effect))));
+        //ITEMS.register(path, () -> new DrinkBlockBigItem(block.get(), new Item.Properties().tab(Vinery.CREATIVE_TAB).food(wineFoodComponent(effect))));
         return registerWithoutItem(path, block);
     }
-    
+
 
     private static FoodProperties wineFoodComponent(MobEffect effect) {
         FoodProperties.Builder component = new FoodProperties.Builder().nutrition(1);
@@ -239,7 +238,6 @@ public class ObjectRegistry {
 
 
     public static void register(IEventBus eventBus) {
-        Vinery.LOGGER.error("register objects");
         ITEMS.register(eventBus);
         BLOCKS.register(eventBus);
         /*

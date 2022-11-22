@@ -78,7 +78,7 @@ public class ClientModEvents {
         event.registerEntityRenderer(VineryEntites.WANDERING_WINEMAKER.get(), WanderingWinemakerRenderer::new);
         event.registerEntityRenderer(VineryBlockEntityTypes.CHAIR.get(), ChairRenderer::new);
 
-        GeoArmorRenderer.registerArmorRenderer(StrawHatItem.class, new StrawHatRenderer());
+        GeoArmorRenderer.registerArmorRenderer(StrawHatItem.class, StrawHatRenderer::new);
     }
 
     @SubscribeEvent
