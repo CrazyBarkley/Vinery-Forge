@@ -283,19 +283,6 @@ public class ObjectRegistry {
         return ITEMS.register(path, item);
     }
 
-    /*
-    private static <T extends Block> RegistryObject<T> registerWine(String path, Supplier<T> block, MobEffect effect) {
-        ITEMS.register(path, () -> new DrinkBlockItem(block.get(), new Item.Properties().tab(Vinery.CREATIVE_TAB).food(wineFoodComponent(effect))));
-        return register(path, block);
-    }
-
-    private static <T extends Block> RegistryObject<T> registerBigWine(String path, Supplier<T> block, MobEffect effect) {
-        ITEMS.register(path, () -> new DrinkBlockBigItem(block.get(), new Item.Properties().tab(Vinery.CREATIVE_TAB).food(wineFoodComponent(effect))));
-        return register(path, block);
-    }
-    */
-
-
     private static FoodProperties wineFoodComponent(MobEffect effect) {
         FoodProperties.Builder component = new FoodProperties.Builder().nutrition(1);
         if(effect != null) component.effect(new MobEffectInstance(effect, 45 * 20), 1.0f);
