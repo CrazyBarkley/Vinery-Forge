@@ -1,6 +1,9 @@
 package daniking.vinery;
 
+import daniking.vinery.mixin.AxeItemAccess;
 import daniking.vinery.registry.*;
+import daniking.vinery.world.VineryConfiguredFeatures;
+import dev.architectury.registry.fuel.FuelRegistry;
 import net.minecraft.core.Registry;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
@@ -16,13 +19,16 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.IdentityHashMap;
+import java.util.Map;
+
 @Mod(Vinery.MODID)
 public class Vinery{
 
     public static final String MODID = "vinery";
 
     public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
-    public static final CreativeModeTab CREATIVE_TAB = new CreativeModeTab(new VineryIdentifier("creative_tab").toString()) {
+    public static final CreativeModeTab CREATIVE_TAB = new CreativeModeTab("vinery.creative_tab") {
         @Override
         public @NotNull ItemStack makeIcon() {
             return new ItemStack(ObjectRegistry.RED_GRAPE.get());
@@ -34,8 +40,6 @@ public class Vinery{
     public static final TagKey<Block> WINE_RACK = TagKey.create(Registry.BLOCK_REGISTRY, new VineryIdentifier("wine_racks"));
 
     public Vinery() {
-        Vinery.LOGGER.error("mod head");
-
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         VineryEntites.register(modEventBus);
@@ -45,7 +49,7 @@ public class Vinery{
         VineryRecipeTypes.register(modEventBus);
         VinerySoundEvents.register(modEventBus);
         VineryVillagers.register(modEventBus);
-
+        VineryConfiguredFeatures.FEATURES.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -56,29 +60,15 @@ public class Vinery{
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() ->{
             VineryVillagers.registerPOIs();
+            FuelRegistry.register(300, ObjectRegistry.CHERRY_FENCE.get(), ObjectRegistry.CHERRY_FENCE_GATE.get(), ObjectRegistry.STACKABLE_LOG.get(), ObjectRegistry.FERMENTATION_BARREL.get());
         });
-    }
-    /*
-    public void onInitialize() {
 
-        ObjectRegistry.init();
-        VineryBlockEntityTypes.init();
-        AdditionalHouses.registerNewVillageStructures();
-        VineryScreenHandlerTypes.init();
-        VineryRecipeTypes.init();
-        LootTableEvents.MODIFY.register((resourceManager, manager, id, supplier, setter) -> {
-            final ResourceLocation resourceLocation = new VineryIdentifier("inject/seeds");
-            if (Blocks.GRASS.getLootTable().equals(id) || Blocks.TALL_GRASS.getLootTable().equals(id) || Blocks.FERN.getLootTable().equals(id)) {
-                supplier.pool(LootPool.lootPool().add(LootTableReference.lootTableReference(resourceLocation).setWeight(1)).build());
-            }
-        });
-        VineryBoatTypes.init();
-        VineryConfiguredFeatures.init();
-        VinerySoundEvents.init();
-        VineryVillagers.init();
-        VineryEntites.init();
+        Map<Block, Block> strippables = new IdentityHashMap<>(AxeItemAccess.getStrippables());
+        strippables.put(ObjectRegistry.CHERRY_LOG.get(), ObjectRegistry.STRIPPED_CHERRY_LOG.get());
+        strippables.put(ObjectRegistry.CHERRY_WOOD.get(), ObjectRegistry.STRIPPED_CHERRY_WOOD.get());
+        strippables.put(ObjectRegistry.OLD_CHERRY_LOG.get(), ObjectRegistry.STRIPPED_OLD_CHERRY_LOG.get());
+        strippables.put(ObjectRegistry.OLD_CHERRY_WOOD.get(), ObjectRegistry.STRIPPED_OLD_CHERRY_WOOD.get());
+        AxeItemAccess.setStripables(strippables);
     }
-
-     */
 }
 

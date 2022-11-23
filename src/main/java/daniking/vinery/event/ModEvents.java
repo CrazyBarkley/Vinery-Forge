@@ -1,14 +1,20 @@
 package daniking.vinery.event;
 
 import daniking.vinery.Vinery;
+import daniking.vinery.VineryIdentifier;
 import daniking.vinery.entity.WanderingWinemakerEntity;
 import daniking.vinery.registry.ObjectRegistry;
 import daniking.vinery.registry.VineryEntites;
 import daniking.vinery.registry.VineryVillagers;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.entries.LootTableReference;
+import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -61,6 +67,15 @@ public class ModEvents {
         public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
             event.put(VineryEntites.MULE.get(), Llama.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.2f).build());
             event.put(VineryEntites.WANDERING_WINEMAKER.get(), WanderingWinemakerEntity.createMobAttributes().build());
+        }
+
+        @SubscribeEvent
+        public static void lootTableLoadEvent(LootTableLoadEvent event) {
+            final ResourceLocation resourceLocation = new VineryIdentifier("inject/seeds");
+            ResourceLocation id = event.getTable().getLootTableId();
+            if (Blocks.GRASS.getLootTable().equals(id) || Blocks.TALL_GRASS.getLootTable().equals(id) || Blocks.FERN.getLootTable().equals(id)) {
+                event.getTable().addPool(LootPool.lootPool().add(LootTableReference.lootTableReference(resourceLocation).setWeight(1)).build());
+            }
         }
     }
 
