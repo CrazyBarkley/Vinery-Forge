@@ -5,10 +5,13 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "vinery.refmap.json",
   "mixins": [
+    "AxeItemAccess",
+    "BlockEntityTypeMixin",
     "BlockMixin",
     "BoneMealItemMixin",
     "FoxEntityEatSweetBerriesGoalMixin",
-    "WanderingTraderManagerMixin"
+    "WanderingTraderManagerMixin",
+    "WoodTypeAccessor"
   ],
   "client": [
   ],

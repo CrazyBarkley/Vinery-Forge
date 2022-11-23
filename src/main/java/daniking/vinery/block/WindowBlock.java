@@ -1,6 +1,5 @@
 package daniking.vinery.block;
 
-import daniking.vinery.Vinery;
 import daniking.vinery.registry.ObjectRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
