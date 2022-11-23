@@ -40,8 +40,6 @@ public class Vinery{
     public static final TagKey<Block> WINE_RACK = TagKey.create(Registry.BLOCK_REGISTRY, new VineryIdentifier("wine_racks"));
 
     public Vinery() {
-        Vinery.LOGGER.error("mod head");
-
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         VineryEntites.register(modEventBus);
@@ -72,27 +70,5 @@ public class Vinery{
         strippables.put(ObjectRegistry.OLD_CHERRY_WOOD.get(), ObjectRegistry.STRIPPED_OLD_CHERRY_WOOD.get());
         AxeItemAccess.setStripables(strippables);
     }
-    /*
-    public void onInitialize() {
-
-        ObjectRegistry.init();
-        VineryBlockEntityTypes.init();
-        AdditionalHouses.registerNewVillageStructures();
-        VineryScreenHandlerTypes.init();
-        VineryRecipeTypes.init();
-        LootTableEvents.MODIFY.register((resourceManager, manager, id, supplier, setter) -> {
-            final ResourceLocation resourceLocation = new VineryIdentifier("inject/seeds");
-            if (Blocks.GRASS.getLootTable().equals(id) || Blocks.TALL_GRASS.getLootTable().equals(id) || Blocks.FERN.getLootTable().equals(id)) {
-                supplier.pool(LootPool.lootPool().add(LootTableReference.lootTableReference(resourceLocation).setWeight(1)).build());
-            }
-        });
-        VineryBoatTypes.init();
-        VineryConfiguredFeatures.init();
-        VinerySoundEvents.init();
-        VineryVillagers.init();
-        VineryEntites.init();
-    }
-
-     */
 }
 
