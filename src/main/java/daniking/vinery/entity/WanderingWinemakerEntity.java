@@ -13,10 +13,10 @@ import java.util.Map;
 
 public class WanderingWinemakerEntity extends WanderingTrader {
 	public static final Int2ObjectMap<VillagerTrades.ItemListing[]> TRADES = new Int2ObjectOpenHashMap<>(Map.of(1, new VillagerTrades.ItemListing[] {
-			new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_GRAPE_SEEDS.get(), 1, 1, 8, 1),
-			new VillagerTrades.ItemsForEmeralds(ObjectRegistry.WHITE_GRAPE_SEEDS.get(), 1, 1, 8, 1),
-			//new VillagerTrades.ItemsForEmeralds(ObjectRegistry.CHERRY_SAPLING, 3, 1, 8, 1),
-			//new VillagerTrades.ItemsForEmeralds(ObjectRegistry.OLD_CHERRY_SAPLING, 5, 1, 8, 1),
+			new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_GRAPE.get(), 1, 1, 8, 1),
+			new VillagerTrades.ItemsForEmeralds(ObjectRegistry.WHITE_GRAPE.get(), 1, 1, 8, 1),
+			new VillagerTrades.ItemsForEmeralds(ObjectRegistry.CHERRY_SAPLING.get(), 3, 1, 8, 1),
+			new VillagerTrades.ItemsForEmeralds(ObjectRegistry.OLD_CHERRY_SAPLING.get(), 5, 1, 8, 1),
 			new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_GRAPE.get(), 2, 1, 8, 1),
 			new VillagerTrades.ItemsForEmeralds(ObjectRegistry.RED_GRAPEJUICE_WINE_BOTTLE.get(), 2, 1, 8, 1),
 			new VillagerTrades.ItemsForEmeralds(ObjectRegistry.WHITE_GRAPEJUICE_WINE_BOTTLE.get(), 2, 1, 8, 1),

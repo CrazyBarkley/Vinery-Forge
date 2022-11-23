@@ -49,7 +49,7 @@ public class Vinery{
         VineryRecipeTypes.register(modEventBus);
         VinerySoundEvents.register(modEventBus);
         VineryVillagers.register(modEventBus);
-        VineryConfiguredFeatures.FEATURES.register(modEventBus);
+        VineryConfiguredFeatures.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

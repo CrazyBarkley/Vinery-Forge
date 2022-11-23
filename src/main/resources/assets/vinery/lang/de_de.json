@@ -149,6 +149,21 @@
   "block.vinery.winebox.tooltip.shift_3": "Shift-Rechtsklick mit leerer Hand zum schliessen",
   "block.vinery.winerack.tooltip.shift_1": "Lagermöglichkeit für Weinflaschen",
   "block.vinery.winerack.tooltip.shift_2": "Shift-Rechtsklick mit leerer Hand um Flaschen zu entnehmen",
-  "block.vinery.press.tooltip": "Der Winzers bevorzugte Arbeitsplatz"
+  "block.vinery.press.tooltip": "Der Winzers bevorzugte Arbeitsplatz",
+  "block.vinery.red_vine": "Red Vine",
+  "block.vinery.red_vine_variant_b": "Red Vine",
+  "block.vinery.red_vine_variant_c": "Red Vine",
+  "block.vinery.red_vine_variant_d": "Red Vine",
+  "block.vinery.pink_cherry_leaves": "Pink Cherry Leaves",
+  "block.vinery.banner": "Banner",
+  "block.vinery.big_bottle": "Big Bottle",
+  "container.storagepot": "Storage Pot",
+  "tooltip.vinery.year": "Year: ",
+  "block.vinery.apple_cider": "Apple Cider",
+  "block.vinery.apple_juice": "Apple Juice",
+  "item.vinery.applesauce": "Applesauce",
+  "item.vinery.cookingpot.tooltip": "§oCan be cooked in a Cooking Pot§o",
+  "item.vinery.applesauce_line1.tooltip": " - Apple",
+  "item.vinery.applesauce_line2.tooltip": " - Sugar"
 
 }
