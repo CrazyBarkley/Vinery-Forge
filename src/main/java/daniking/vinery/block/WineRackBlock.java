@@ -122,7 +122,7 @@ public class WineRackBlock extends BaseEntityBlock {
 	public void appendHoverText(ItemStack itemStack, BlockGetter world, List<Component> tooltip, TooltipFlag tooltipContext) {
 		tooltip.add(Component.translatable("block.vinery.winerack.tooltip.shift_1").withStyle(ChatFormatting.ITALIC, ChatFormatting.GRAY));
 			if (Screen.hasShiftDown()) {
-		tooltip.add(Component.translatable("block.vinery.winerack.tooltip.shift_1"));
+		tooltip.add(Component.translatable("block.vinery.winerack.tooltip.shift_2"));
 	} else {
 		tooltip.add(Component.translatable("block.vinery.breadblock.tooltip.tooltip_shift"));
 		}
