@@ -14,6 +14,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
@@ -193,26 +194,32 @@ public class ObjectRegistry {
     public static final RegistryObject<Item>  DIRT_SLAB_ITEM = registerItem("dirt_slab", () -> new BlockItem(DIRT_SLAB.get(), getSettings()));
     public static final RegistryObject<Block> GRASS_SLAB = register("grass_slab", () -> new SnowyVariantSlabBlock(BlockBehaviour.Properties.copy(Blocks.GRASS_BLOCK)));
     public static final RegistryObject<Item>  GRASS_SLAB_ITEM = registerItem("grass_slab", () -> new BlockItem(GRASS_SLAB.get(), getSettings()));
+
+    //Wines
     public static final RegistryObject<Block> WINE_BOTTLE = register("wine_bottle", () -> new EmptyWineBottleBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).instabreak().noOcclusion()));
-    public static final RegistryObject<Item>  WINE_BOTTLE_ITEM = registerItem("wine_bottle", () -> new BlockItem(WINE_BOTTLE.get(), getSettings()));
+    public static final RegistryObject<Item>  WINE_BOTTLE_ITEM = registerItem("wine_bottle", () -> new DrinkBlockItem(WINE_BOTTLE.get(), getSettings()));
     public static final RegistryObject<Block> RED_GRAPEJUICE_WINE_BOTTLE = register("red_grapejuice_wine_bottle", () -> new RedGrapejuiceWineBottle(getWineSettings()));
-    public static final RegistryObject<Item>  RED_GRAPEJUICE_WINE_BOTTLE_ITEM = registerItem("red_grapejuice_wine_bottle", () -> new BlockItem(RED_GRAPEJUICE_WINE_BOTTLE.get(), getSettings()));
+    public static final RegistryObject<Item>  RED_GRAPEJUICE_WINE_BOTTLE_ITEM = registerItem("red_grapejuice_wine_bottle", () -> new DrinkBlockItem(RED_GRAPEJUICE_WINE_BOTTLE.get(), getWineItemSettings(null)));
     public static final RegistryObject<Block> WHITE_GRAPEJUICE_WINE_BOTTLE = register("white_grapejuice_wine_bottle", () -> new WhiteGrapejuiceWineBottle(getWineSettings()));
-    public static final RegistryObject<Item>  WHITE_GRAPEJUICE_WINE_BOTTLE_ITEM = registerItem("white_grapejuice_wine_bottle", () -> new BlockItem(WHITE_GRAPEJUICE_WINE_BOTTLE.get(), getSettings()));
-    public static final RegistryObject<Block> CHENET_WINE = register("chenet_wine", () -> new ChenetBottleBlock(getWineSettings())/*, MobEffects.JUMP*/);
-    public static final RegistryObject<Item>  CHENET_WINE_ITEM = registerItem("chenet_wine", () -> new BlockItem(CHENET_WINE.get(), getSettings()));
-    public static final RegistryObject<Block> KING_DANIS_WINE = register("king_danis_wine", () -> new KingDanisBottleBlock(getWineSettings())/*, MobEffects.LUCK*/);
-    public static final RegistryObject<Item>  KING_DANIS_WINE_ITEM = registerItem("king_danis_wine", () -> new BlockItem(KING_DANIS_WINE.get(), getSettings()));
-    public static final RegistryObject<Block> NOIR_WINE = register("noir_wine", () -> new WineBottleBlock(getWineSettings())/*, MobEffects.WATER_BREATHING*/);
-    public static final RegistryObject<Item>  NOIR_WINE_ITEM = registerItem("noir_wine", () -> new BlockItem(NOIR_WINE.get(), getSettings()));
-    public static final RegistryObject<Block> CLARK_WINE = register("clark_wine", () -> new WineBottleBlock(getWineSettings())/*, MobEffects.FIRE_RESISTANCE*/);
-    public static final RegistryObject<Item>  CLARK_WINE_ITEM = registerItem("clark_wine", () -> new BlockItem(CLARK_WINE.get(), getSettings()));
-    public static final RegistryObject<Block> MELLOHI_WINE = register("mellohi_wine", () -> new MellohiWineBlock(getWineSettings())/*, MobEffects.DAMAGE_BOOST*/);
-    public static final RegistryObject<Item>  MELLOHI_WINE_ITEM = registerItem("mellohi_wine", () -> new BlockItem(MELLOHI_WINE.get(), getSettings()));
-    public static final RegistryObject<Block> BOLVAR_WINE = register("bolvar_wine", () -> new WineBottleBlock(getWineSettings())/*, MobEffects.HEALTH_BOOST*/);
-    public static final RegistryObject<Item>  BOLVAR_WINE_ITEM = registerItem("bolvar_wine", () -> new BlockItem(BOLVAR_WINE.get(), getSettings()));
-    public static final RegistryObject<Block> CHERRY_WINE = register("cherry_wine", () -> new CherryWineBlock(getWineSettings())/*, MobEffects.MOVEMENT_SPEED*/);
-    public static final RegistryObject<Item>  CHERRY_WINE_ITEM = registerItem("cherry_wine", () -> new BlockItem(CHERRY_WINE.get(), getSettings()));
+    public static final RegistryObject<Item>  WHITE_GRAPEJUICE_WINE_BOTTLE_ITEM = registerItem("white_grapejuice_wine_bottle", () -> new DrinkBlockItem(WHITE_GRAPEJUICE_WINE_BOTTLE.get(), getWineItemSettings(null)));
+    public static final RegistryObject<Block> NOIR_WINE = register("noir_wine", () -> new WineBottleBlock(getWineSettings()));
+    public static final RegistryObject<Item>  NOIR_WINE_ITEM = registerItem("noir_wine", () -> new DrinkBlockItem(NOIR_WINE.get(), getWineItemSettings(MobEffects.WATER_BREATHING)));
+    public static final RegistryObject<Block> BOLVAR_WINE = register("bolvar_wine", () -> new WineBottleBlock(getWineSettings()));
+    public static final RegistryObject<Item>  BOLVAR_WINE_ITEM = registerItem("bolvar_wine", () -> new DrinkBlockItem(BOLVAR_WINE.get(), getWineItemSettings(MobEffects.HEALTH_BOOST)));
+    public static final RegistryObject<Block> CHERRY_WINE = register("cherry_wine", () -> new CherryWineBlock(getWineSettings()));
+    public static final RegistryObject<Item>  CHERRY_WINE_ITEM = registerItem("cherry_wine", () -> new DrinkBlockItem(CHERRY_WINE.get(), getWineItemSettings(MobEffects.MOVEMENT_SPEED)));
+    public static final RegistryObject<Block> CLARK_WINE = register("clark_wine", () -> new WineBottleBlock(getWineSettings()));
+    public static final RegistryObject<Item>  CLARK_WINE_ITEM = registerItem("clark_wine", () -> new DrinkBlockItem(CLARK_WINE.get(), getWineItemSettings(MobEffects.FIRE_RESISTANCE)));
+    //Big Wines
+    public static final RegistryObject<Block> CHENET_WINE = register("chenet_wine", () -> new ChenetBottleBlock(getWineSettings()));
+    public static final RegistryObject<Item>  CHENET_WINE_ITEM = registerItem("chenet_wine", () -> new DrinkBlockBigItem(CHENET_WINE.get(), getWineItemSettings(MobEffects.JUMP)));
+    public static final RegistryObject<Block> KING_DANIS_WINE = register("king_danis_wine", () -> new KingDanisBottleBlock(getWineSettings()));
+    public static final RegistryObject<Item>  KING_DANIS_WINE_ITEM = registerItem("king_danis_wine", () -> new DrinkBlockBigItem(KING_DANIS_WINE.get(), getWineItemSettings(MobEffects.LUCK)));
+    public static final RegistryObject<Block> MELLOHI_WINE = register("mellohi_wine", () -> new MellohiWineBlock(getWineSettings()));
+    public static final RegistryObject<Item>  MELLOHI_WINE_ITEM = registerItem("mellohi_wine", () -> new DrinkBlockBigItem(MELLOHI_WINE.get(), getWineItemSettings(MobEffects.DAMAGE_BOOST)));
+    //Wines end
+
+
     public static final RegistryObject<Block> CHERRY_JAR = register("cherry_jar", () -> new CherryJarBlock(BlockBehaviour.Properties.of(Material.GLASS).instabreak().noOcclusion()));
     public static final RegistryObject<Item>  CHERRY_JAR_ITEM= registerItem("cherry_jar", () -> new BlockItem(CHERRY_JAR.get(), getSettings()));
     public static final RegistryObject<Block> CHERRY_JAM = register("cherry_jam", () -> new CherryJamBlock(BlockBehaviour.Properties.of(Material.GLASS).instabreak().noOcclusion()));
@@ -311,6 +318,10 @@ public class ObjectRegistry {
 
     private static Item.Properties getSettings() {
         return getSettings(settings -> {});
+    }
+
+    private static Item.Properties getWineItemSettings(MobEffect effect) {
+        return getSettings(settings -> {}).food(wineFoodComponent(effect));
     }
 
     private static BlockBehaviour.Properties getVineSettings() {
