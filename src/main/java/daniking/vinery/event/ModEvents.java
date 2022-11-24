@@ -7,13 +7,18 @@ import daniking.vinery.registry.ObjectRegistry;
 import daniking.vinery.registry.VineryEntites;
 import daniking.vinery.registry.VineryVillagers;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import net.minecraft.client.color.item.ItemColor;
+import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.horse.Llama;
 import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.GrassColor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootTableReference;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
@@ -67,6 +72,27 @@ public class ModEvents {
             if (Blocks.GRASS.getLootTable().equals(id) || Blocks.TALL_GRASS.getLootTable().equals(id) || Blocks.FERN.getLootTable().equals(id)) {
                 event.getTable().addPool(LootPool.lootPool().add(LootTableReference.lootTableReference(resourceLocation).setWeight(1)).build());
             }
+        }
+
+        @SubscribeEvent
+        public static void colorHandlerBlockEvent(RegisterColorHandlersEvent.Block event) {
+            event.register((state, world, pos, tintIndex) -> {
+                if (world == null || pos == null) {
+                    return -1;
+                }
+                return BiomeColors.getAverageGrassColor(world, pos);
+            }, ObjectRegistry.GRASS_SLAB.get());
+            event.register((state, world, pos, tintIndex) -> {
+                if (world == null || pos == null) {
+                    return -1;
+                }
+                return BiomeColors.getAverageWaterColor(world, pos);
+            }, ObjectRegistry.KITCHEN_SINK.get());
+        }
+
+        @SubscribeEvent
+        public static void colorHandlerItemEvent(RegisterColorHandlersEvent.Item event) {
+            event.register((p_92672_, p_92673_) -> GrassColor.get(1.0, 0.5), ObjectRegistry.GRASS_SLAB.get().asItem());
         }
     }
 
