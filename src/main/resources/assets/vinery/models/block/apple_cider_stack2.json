@@ -1,5 +1,6 @@
 {
 	"credit": "Made by Satisfy",
+	"render_type": "cutout",
 	"textures": {
 		"2": "vinery:block/bag_side",
 		"3": "vinery:block/bag_bottom",

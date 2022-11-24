@@ -1,5 +1,6 @@
 {
 	"credit": "Made by Satisfy",
+	"render_type": "cutout",
 	"textures": {
 		"6": "vinery:block/grapevine_stem",
 		"particle": "vinery:block/grapevine_stem"

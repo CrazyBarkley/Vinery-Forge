@@ -1,5 +1,6 @@
 {
 	"credit": "Made by Satisfy",
+	"render_type": "cutout",
 	"textures": {
 		"2": "vinery:block/barrel_bottom",
 		"3": "vinery:block/storage_pot",

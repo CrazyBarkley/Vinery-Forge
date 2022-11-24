@@ -1,5 +1,6 @@
 {
 	"credit": "Made by Satisfy",
+	"render_type": "cutout",
 	"textures": {
 		"0": "vinery:block/cooking_pot_side",
 		"1": "vinery:block/cooking_pot_inside",

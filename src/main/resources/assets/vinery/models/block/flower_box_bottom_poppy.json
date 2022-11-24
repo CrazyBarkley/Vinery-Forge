@@ -1,5 +1,6 @@
 {
   "parent": "vinery:block/flower_box_bottom_main",
+  "render_type": "cutout",
   "textures": {
     "10": "minecraft:block/poppy"
   }

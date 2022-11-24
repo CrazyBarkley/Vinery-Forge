@@ -1,5 +1,6 @@
 {
   "parent": "minecraft:block/template_glass_pane_side",
+  "render_type": "translucent",
   "textures": {
     "pane": "vinery:block/window_main",
     "edge": "vinery:block/window_pane_top"

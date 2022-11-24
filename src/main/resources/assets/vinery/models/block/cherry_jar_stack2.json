@@ -1,5 +1,6 @@
 {
 	"credit": "Made by Satisfy",
+	"render_type": "cutout",
 	"textures": {
 		"0": "vinery:block/cherry_jar",
 		"particle": "vinery:block/cherry_jar"
