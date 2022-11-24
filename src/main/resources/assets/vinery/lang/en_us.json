@@ -157,5 +157,7 @@
   "item.vinery.oven.tooltip": "§oBaked in a wood fired Oven§o",
   "item.vinery.cookingpot.tooltip": "§oCan be cooked in a Cooking Pot§o",
   "item.vinery.applesauce_line1.tooltip": " - Apple",
-  "item.vinery.applesauce_line2.tooltip": " - Sugar"
+  "item.vinery.applesauce_line2.tooltip": " - Sugar",
+  "block.vinery.winerack.tooltip.shift_1": "A Storage Option for Wine Bottles",
+  "block.vinery.winerack.tooltip.shift_2": "Shift-right click with empty hand to take out bottles",
 }

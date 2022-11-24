@@ -38,10 +38,10 @@ public class ModEvents {
                 Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
 
                 List<VillagerTrades.ItemListing> level1 = trades.get(1);
-                level1.add(new VineryVillagers.BuyForOneEmeraldFactory(ObjectRegistry.RED_GRAPE.get(), 15, 4, 5));
-                level1.add(new VineryVillagers.BuyForOneEmeraldFactory(ObjectRegistry.WHITE_GRAPE.get(), 15, 4, 5));
-                level1.add(new VineryVillagers.SellItemFactory(ObjectRegistry.RED_GRAPE.get(), 2, 1, 5));
-                level1.add(new VineryVillagers.SellItemFactory(ObjectRegistry.WHITE_GRAPE.get(), 2, 1, 5));
+                level1.add(new VineryVillagers.BuyForOneEmeraldFactory(ObjectRegistry.RED_GRAPE.get(), 5, 4, 5));
+                level1.add(new VineryVillagers.BuyForOneEmeraldFactory(ObjectRegistry.WHITE_GRAPE.get(), 5, 4, 5));
+                level1.add(new VineryVillagers.SellItemFactory(ObjectRegistry.RED_GRAPE_SEEDS.get(), 2, 1, 5));
+                level1.add(new VineryVillagers.SellItemFactory(ObjectRegistry.WHITE_GRAPE_SEEDS.get(), 2, 1, 5));
 
                 List<VillagerTrades.ItemListing> level2 = trades.get(2);
                 level2.add(new VineryVillagers.SellItemFactory(ObjectRegistry.WINE_BOTTLE.get(), 1, 2, 7));
