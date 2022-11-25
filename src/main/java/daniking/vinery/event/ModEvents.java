@@ -74,6 +74,17 @@ public class ModEvents {
             }
         }
 
+
+    }
+
+    @Mod.EventBusSubscriber(modid = Vinery.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class ModEventBusEvents {
+        @SubscribeEvent
+        public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
+            event.put(VineryEntites.MULE.get(), Llama.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.2f).build());
+            event.put(VineryEntites.WANDERING_WINEMAKER.get(), WanderingWinemakerEntity.createMobAttributes().build());
+        }
+
         @SubscribeEvent
         public static void colorHandlerBlockEvent(RegisterColorHandlersEvent.Block event) {
             event.register((state, world, pos, tintIndex) -> {
@@ -93,15 +104,6 @@ public class ModEvents {
         @SubscribeEvent
         public static void colorHandlerItemEvent(RegisterColorHandlersEvent.Item event) {
             event.register((p_92672_, p_92673_) -> GrassColor.get(1.0, 0.5), ObjectRegistry.GRASS_SLAB.get().asItem());
-        }
-    }
-
-    @Mod.EventBusSubscriber(modid = Vinery.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class ModEventBusEvents {
-        @SubscribeEvent
-        public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
-            event.put(VineryEntites.MULE.get(), Llama.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.2f).build());
-            event.put(VineryEntites.WANDERING_WINEMAKER.get(), WanderingWinemakerEntity.createMobAttributes().build());
         }
     }
 
