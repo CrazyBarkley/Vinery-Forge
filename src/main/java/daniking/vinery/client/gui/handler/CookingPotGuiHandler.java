@@ -23,7 +23,7 @@ public class CookingPotGuiHandler extends AbstractContainerMenu {
     private final Level world;
 
     public CookingPotGuiHandler(int syncId, Inventory playerInventory) {
-        this(syncId, playerInventory, new SimpleContainer(8), new SimpleContainerData(3));
+        this(syncId, playerInventory, new SimpleContainer(8), new SimpleContainerData(2));
     }
 
     public CookingPotGuiHandler(int syncId, Inventory playerInventory, Container inventory, ContainerData propertyDelegate) {
@@ -68,7 +68,7 @@ public class CookingPotGuiHandler extends AbstractContainerMenu {
     }
 
     public boolean isBeingBurned() {
-        return propertyDelegate.get(2) != 0;
+        return propertyDelegate.get(1) != 0;
     }
 
 

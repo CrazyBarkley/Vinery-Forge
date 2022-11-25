@@ -5,6 +5,7 @@ import daniking.vinery.block.entity.chair.ChairRenderer;
 import daniking.vinery.client.gui.CookingPotGui;
 import daniking.vinery.client.gui.FermentationBarrelGui;
 import daniking.vinery.client.gui.StoveGui;
+import daniking.vinery.client.gui.WinePressGui;
 import daniking.vinery.client.render.block.WineRackRenderer;
 import daniking.vinery.client.render.entity.SimpleGeoRenderer;
 import daniking.vinery.client.render.entity.WanderingWinemakerRenderer;
@@ -40,6 +41,7 @@ public class ClientModEvents {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         MenuScreens.register(VineryScreenHandlerTypes.STOVE_GUI_HANDLER.get(), StoveGui::new);
+        MenuScreens.register(VineryScreenHandlerTypes.WINE_PRESS_SCREEN_HANDLER.get(), WinePressGui::new);
         MenuScreens.register(VineryScreenHandlerTypes.FERMENTATION_BARREL_GUI_HANDLER.get(), FermentationBarrelGui::new);
         MenuScreens.register(VineryScreenHandlerTypes.COOKING_POT_SCREEN_HANDLER.get(), CookingPotGui::new);
 

@@ -6,9 +6,15 @@
     },
     {
       "item": "vinery:red_grapejuice_wine_bottle"
+    },
+    {
+      "item": "minecraft:sweet_berries"
+    },
+    {
+      "item": "minecraft:honey_bottle"
     }
   ],
   "result": {
-    "item": "vinery:noir_wine"
+    "item": "vinery:solaris_wine"
   }
 }

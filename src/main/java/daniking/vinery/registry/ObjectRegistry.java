@@ -254,6 +254,8 @@ public class ObjectRegistry {
     public static final RegistryObject<Item> VINEMAKER_BOOTS = registerItem("vinemaker_boots", () -> new WinemakerArmorItem(VineryMaterials.VINEMAKER_ARMOR, EquipmentSlot.FEET, getSettings().rarity(Rarity.RARE)));
     public static final RegistryObject<Item> GLOVES = registerItem("gloves", () -> new GlovesItem(getSettings().rarity(Rarity.RARE)));
 
+    public static final RegistryObject<Item> APPLE_MASH = registerItem("apple_mash", () -> new CherryItem(getSettings().food(Foods.APPLE)));
+
     public static final RegistryObject<Item> CHOCOLATE_BREAD = registerItem("chocolate_bread", () -> new ChocolateBreadItem(getSettings().food(Foods.BREAD)));
     public static final RegistryObject<Item> TOAST = registerItem("toast", () -> new ToastItem(getSettings().food(Foods.BEETROOT_SOUP)));
     public static final RegistryObject<Item> DONUT = registerItem("donut", () -> new DoughnutItem(getSettings().food(Foods.CARROT)));

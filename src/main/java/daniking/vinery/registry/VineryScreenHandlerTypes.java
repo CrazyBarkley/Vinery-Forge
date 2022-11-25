@@ -4,6 +4,7 @@ import daniking.vinery.Vinery;
 import daniking.vinery.client.gui.handler.CookingPotGuiHandler;
 import daniking.vinery.client.gui.handler.FermentationBarrelGuiHandler;
 import daniking.vinery.client.gui.handler.StoveGuiHandler;
+import daniking.vinery.client.gui.handler.WinePressGuiHandler;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -19,6 +20,8 @@ public class VineryScreenHandlerTypes {
     public static final RegistryObject<MenuType<StoveGuiHandler>> STOVE_GUI_HANDLER = create("stove_gui_handler", () -> new MenuType<>(StoveGuiHandler::new));
     public static final RegistryObject<MenuType<FermentationBarrelGuiHandler>> FERMENTATION_BARREL_GUI_HANDLER = create("fermentation_barrel_gui_handler", () -> new MenuType<>(FermentationBarrelGuiHandler::new));
     public static final RegistryObject<MenuType<CookingPotGuiHandler>> COOKING_POT_SCREEN_HANDLER = create("cooking_pot_gui_handler", () -> new MenuType<>(CookingPotGuiHandler::new));
+
+    public static final RegistryObject<MenuType<WinePressGuiHandler>> WINE_PRESS_SCREEN_HANDLER = create("wine_press_gui_handler", () -> new MenuType<>(WinePressGuiHandler::new));
 
     private static <T extends MenuType<?>> RegistryObject<T> create(String name, Supplier<T> type){
         return MENU_TYPES.register(name, type);

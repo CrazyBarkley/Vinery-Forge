@@ -1,6 +1,7 @@
 package daniking.vinery.block;
 
 import daniking.vinery.block.entity.CookingPotEntity;
+import daniking.vinery.registry.VineryBlockEntityTypes;
 import daniking.vinery.registry.VinerySoundEvents;
 import daniking.vinery.util.VineryUtils;
 import net.minecraft.ChatFormatting;
@@ -22,8 +23,9 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -32,12 +34,12 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -45,7 +47,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class CookingPotBlock extends Block implements EntityBlock {
+public class CookingPotBlock extends BaseEntityBlock {
     private static final Supplier<VoxelShape> voxelShapeSupplier = () -> {
         VoxelShape shape = Shapes.empty();
         shape = Shapes.joinUnoptimized(shape, Shapes.box(0.25, 0, 0.25, 0.75, 0.0625, 0.75), BooleanOp.OR);
@@ -75,12 +77,12 @@ public class CookingPotBlock extends Block implements EntityBlock {
     });
 
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-    public static final BooleanProperty HAS_CHERRIES_INSIDE = BooleanProperty.create("has_cherries");
-    private static final Property<Boolean> COOKING = BooleanProperty.create("has_cherries");
+    public static final BooleanProperty LIT = BooleanProperty.create("lit");
+    public static final BooleanProperty COOKING = BooleanProperty.create("cooking");
 
     public CookingPotBlock(Properties settings) {
         super(settings);
-        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(HAS_CHERRIES_INSIDE, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(COOKING, false).setValue(LIT, false));
     }
 
 
@@ -145,18 +147,18 @@ public class CookingPotBlock extends Block implements EntityBlock {
     
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, HAS_CHERRIES_INSIDE);
+        builder.add(FACING, COOKING, LIT);
     }
 
+    @Override
+    public @NotNull RenderShape getRenderShape(@NotNull BlockState state) {
+        return RenderShape.MODEL;
+    }
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
-        return (world1, pos, state1, blockEntity) -> {
-            if (blockEntity instanceof BlockEntityTicker<?>) {
-                ((BlockEntityTicker) blockEntity).tick(world1, pos, state1, blockEntity);
-            }
-        };
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(@NotNull Level world, @NotNull BlockState state, @NotNull BlockEntityType<T> type) {
+        return createTickerHelper(type, VineryBlockEntityTypes.COOKING_POT_BLOCK_ENTITY.get(), (world1, pos, state1, be) -> be.tick(world1, pos, state1, be));
     }
 
     @Nullable
