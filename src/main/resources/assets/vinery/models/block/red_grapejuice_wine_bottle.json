@@ -1,6 +1,5 @@
 {
 	"credit": "Made by Satisfy",
-	"render_type": "cutout",
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "vinery:block/wine/red_grapejuice",

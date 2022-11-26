@@ -1,6 +1,5 @@
 {
 	"credit": "Made by Satisfy",
-	"render_type": "cutout",
 	"textures": {
 		"2": "vinery:block/wine_rack_side",
 		"3": "vinery:block/wine_rack_top",

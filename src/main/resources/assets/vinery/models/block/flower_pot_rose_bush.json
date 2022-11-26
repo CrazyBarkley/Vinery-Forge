@@ -1,7 +1,6 @@
 {
 	"credit": "Made by Satisfy",
 	"parent": "vinery:block/flower_pot_main",
-	"render_type": "cutout",
 	"textures": {
 		"4": "vinery:block/flowers/planted_rose_bush_top",
 		"5": "vinery:block/flowers/planted_rose_bush_bottom"

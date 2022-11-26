@@ -18,10 +18,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.food.Foods;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.SignItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
@@ -189,10 +186,17 @@ public class ObjectRegistry {
     //Wines
     public static final RegistryObject<Block> WINE_BOTTLE = register("wine_bottle", () -> new EmptyWineBottleBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).instabreak().noOcclusion()));
     public static final RegistryObject<Item>  WINE_BOTTLE_ITEM = registerItem("wine_bottle", () -> new DrinkBlockItem(WINE_BOTTLE.get(), getSettings()));
+
+    public static final RegistryObject<Block> APPLE_JUICE = register("apple_juice", () -> new WhiteGrapejuiceWineBottle(getWineSettings()));
+    public static final RegistryObject<Item>  APPLE_JUICE_ITEM = registerItem("apple_juice", () -> new DrinkBlockItem(APPLE_JUICE.get(), getWineItemSettings(VineryEffects.EMPTY.get())));
+
+    public static final RegistryObject<Block> SOLARIS_WINE = register("solaris_wine", () -> new WineBottleBlock(getWineSettings()));
+    public static final RegistryObject<Item>  SOLARIS_WINE_ITEM = registerItem("solaris_wine", () -> new DrinkBlockItem(SOLARIS_WINE.get(), getWineItemSettings(MobEffects.NIGHT_VISION)));
+
     public static final RegistryObject<Block> RED_GRAPEJUICE_WINE_BOTTLE = register("red_grapejuice_wine_bottle", () -> new RedGrapejuiceWineBottle(getWineSettings()));
-    public static final RegistryObject<Item>  RED_GRAPEJUICE_WINE_BOTTLE_ITEM = registerItem("red_grapejuice_wine_bottle", () -> new DrinkBlockItem(RED_GRAPEJUICE_WINE_BOTTLE.get(), getWineItemSettings(null)));
+    public static final RegistryObject<Item>  RED_GRAPEJUICE_WINE_BOTTLE_ITEM = registerItem("red_grapejuice_wine_bottle", () -> new DrinkBlockItem(RED_GRAPEJUICE_WINE_BOTTLE.get(), getWineItemSettings(VineryEffects.EMPTY.get())));
     public static final RegistryObject<Block> WHITE_GRAPEJUICE_WINE_BOTTLE = register("white_grapejuice_wine_bottle", () -> new WhiteGrapejuiceWineBottle(getWineSettings()));
-    public static final RegistryObject<Item>  WHITE_GRAPEJUICE_WINE_BOTTLE_ITEM = registerItem("white_grapejuice_wine_bottle", () -> new DrinkBlockItem(WHITE_GRAPEJUICE_WINE_BOTTLE.get(), getWineItemSettings(null)));
+    public static final RegistryObject<Item>  WHITE_GRAPEJUICE_WINE_BOTTLE_ITEM = registerItem("white_grapejuice_wine_bottle", () -> new DrinkBlockItem(WHITE_GRAPEJUICE_WINE_BOTTLE.get(), getWineItemSettings(VineryEffects.EMPTY.get())));
     public static final RegistryObject<Block> NOIR_WINE = register("noir_wine", () -> new WineBottleBlock(getWineSettings()));
     public static final RegistryObject<Item>  NOIR_WINE_ITEM = registerItem("noir_wine", () -> new DrinkBlockItem(NOIR_WINE.get(), getWineItemSettings(MobEffects.WATER_BREATHING)));
     public static final RegistryObject<Block> BOLVAR_WINE = register("bolvar_wine", () -> new WineBottleBlock(getWineSettings()));
@@ -202,6 +206,15 @@ public class ObjectRegistry {
     public static final RegistryObject<Block> CLARK_WINE = register("clark_wine", () -> new WineBottleBlock(getWineSettings()));
     public static final RegistryObject<Item>  CLARK_WINE_ITEM = registerItem("clark_wine", () -> new DrinkBlockItem(CLARK_WINE.get(), getWineItemSettings(MobEffects.FIRE_RESISTANCE)));
     //Big Wines
+    public static final RegistryObject<Block> JELLIE_WINE = register("jellie_wine", () -> new WineBottleBlock(getWineSettings()));
+    public static final RegistryObject<Item>  JELLIE_WINE_ITEM = registerItem("jellie_wine", () -> new DrinkBlockBigItem(JELLIE_WINE.get(), getWineItemSettings(VineryEffects.JELLIE.get())));
+
+    public static final RegistryObject<Block> APPLE_CIDER = register("apple_cider", () -> new ChenetBottleBlock(getWineSettings()));
+    public static final RegistryObject<Item>  APPLE_CIDER_ITEM = registerItem("apple_cider", () -> new DrinkBlockBigItem(JELLIE_WINE.get(), getWineItemSettings(MobEffects.HEAL)));
+
+    public static final RegistryObject<Block> APPLE_WINE = register("apple_wine", () -> new WineBottleBlock(getWineSettings()));
+    public static final RegistryObject<Item>  APPLE_WINE_ITEM = registerItem("apple_wine", () -> new DrinkBlockBigItem(JELLIE_WINE.get(), getWineItemSettings(MobEffects.REGENERATION)));
+
     public static final RegistryObject<Block> CHENET_WINE = register("chenet_wine", () -> new ChenetBottleBlock(getWineSettings()));
     public static final RegistryObject<Item>  CHENET_WINE_ITEM = registerItem("chenet_wine", () -> new DrinkBlockBigItem(CHENET_WINE.get(), getWineItemSettings(MobEffects.JUMP)));
     public static final RegistryObject<Block> KING_DANIS_WINE = register("king_danis_wine", () -> new KingDanisBottleBlock(getWineSettings()));
@@ -240,6 +253,9 @@ public class ObjectRegistry {
     public static final RegistryObject<Block> FLOWER_POT = register("flower_pot", () -> new FlowerPotBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistryObject<Item>  FLOWER_POT_ITEM = registerItem("flower_pot", () -> new BlockItem(FLOWER_POT.get(), getSettings()));
 
+    public static final RegistryObject<Block> APPLE_CRATE = register("apple_crate", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Item>  APPLE_CRATE_ITEM = registerItem("apple_crate", () -> new BlockItem(APPLE_CRATE.get(), getSettings()));
+
     public static final RegistryObject<Block> BASKET = register("basket", () -> new BasketBlock(BlockBehaviour.Properties.of(Material.DECORATION).instabreak().noOcclusion(), 1));
     public static final RegistryObject<Item>  BASKET_ITEM = registerItem("basket", () -> new BlockItem(BASKET.get(), getSettings()));
     public static final RegistryObject<Block> COOKING_POT = register("cooking_pot", () -> new CookingPotBlock(BlockBehaviour.Properties.of(Material.STONE).instabreak().noOcclusion()));
@@ -255,11 +271,23 @@ public class ObjectRegistry {
     public static final RegistryObject<Item> GLOVES = registerItem("gloves", () -> new GlovesItem(getSettings().rarity(Rarity.RARE)));
 
     public static final RegistryObject<Item> APPLE_MASH = registerItem("apple_mash", () -> new CherryItem(getSettings().food(Foods.APPLE)));
+    public static final RegistryObject<Item> APPLESAUCE = registerItem("applesauce", () -> new AppleSauceItem(getSettings().food(Foods.COOKED_RABBIT)));
+
+    public static final RegistryObject<Item> APPLE_PIE_SLICE = registerItem("apple_pie_slice", () -> new Item(getSettings().food(Foods.COOKED_BEEF)));
+
+    public static final RegistryObject<Block> APPLE_JAM = register("apple_jam", () -> new CherryJamBlock(BlockBehaviour.Properties.of(Material.GLASS).instabreak().noOcclusion()));
+    public static final RegistryObject<Item>  APPLE_JAM_ITEM = registerItem("apple_jam", () -> new BlockItem(APPLE_JAM.get(), getSettings()));
+    public static final RegistryObject<Block> APPLE_PIE = register("apple_pie", () -> new PieBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)));
+    public static final RegistryObject<Item>  APPLE_PIE_ITEM = registerItem("apple_pie", () -> new BlockItem(APPLE_PIE.get(), getSettings()));
+
+    public static final RegistryObject<Item> DOUGH = registerItem("dough", () -> new CherryItem(getSettings()));
 
     public static final RegistryObject<Item> CHOCOLATE_BREAD = registerItem("chocolate_bread", () -> new ChocolateBreadItem(getSettings().food(Foods.BREAD)));
     public static final RegistryObject<Item> TOAST = registerItem("toast", () -> new ToastItem(getSettings().food(Foods.BEETROOT_SOUP)));
     public static final RegistryObject<Item> DONUT = registerItem("donut", () -> new DoughnutItem(getSettings().food(Foods.CARROT)));
     public static final RegistryObject<Item> MILK_BREAD = registerItem("milk_bread", () -> new MilkBreadItem(getSettings().food(Foods.COOKIE)));
+    public static final RegistryObject<Item> BREAD_SLICE = registerItem("bread_slice", () -> new Item(getSettings().food(Foods.BAKED_POTATO)));
+
     public static final RegistryObject<Block> CRUSTY_BREAD = register("crusty_bread", () -> new BreadBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).noOcclusion()));
     public static final RegistryObject<Item>  CRUSTY_BREAD_ITEM = registerItem("crusty_bread", () -> new BlockItem(CRUSTY_BREAD.get(), getSettings()));
 
@@ -269,10 +297,6 @@ public class ObjectRegistry {
 
     private static <T extends Block> RegistryObject<T> register(String path, Supplier<T> block) {
         return BLOCKS.register(path, block);
-    }
-
-    private static RegistryObject<Item> registerBlockItem(String path, Block block, Item.Properties properties) {
-        return ITEMS.register(path, () -> new BlockItem(block, properties));
     }
 
     private static RegistryObject<Block> registerLog(String path) {

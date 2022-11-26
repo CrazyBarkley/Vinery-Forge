@@ -42,6 +42,7 @@ public class Vinery{
     public Vinery() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
+        VineryEffects.register(modEventBus);
         VineryEntites.register(modEventBus);
         ObjectRegistry.register(modEventBus);
         VineryBlockEntityTypes.register(modEventBus);

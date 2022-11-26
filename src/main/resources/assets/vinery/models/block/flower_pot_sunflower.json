@@ -8,8 +8,7 @@
 		"5": "vinery:block/flowers/sunflower_back",
 		"6": "vinery:block/flowers/sunflower_bottom",
 		"7": "vinery:block/flowers/sunflower_top",
-		"particle": "vinery:block/flower_pot",
-		"render_type": "cutout"
+		"particle": "vinery:block/flower_pot"
 	},
 	"elements": [
 		{

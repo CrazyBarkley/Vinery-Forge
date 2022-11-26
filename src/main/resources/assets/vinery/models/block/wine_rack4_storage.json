@@ -1,6 +1,5 @@
 {
 	"credit": "Made by Satisfy",
-	"render_type": "cutout",
 	"textures": {
 		"2": "vinery:block/shelf",
 		"particle": "vinery:block/shelf"

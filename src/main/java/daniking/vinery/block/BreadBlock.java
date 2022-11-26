@@ -1,6 +1,7 @@
 package daniking.vinery.block;
 
 import daniking.vinery.registry.ObjectRegistry;
+import daniking.vinery.util.VineryTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -12,7 +13,6 @@ import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
@@ -30,6 +30,7 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
 import java.util.List;
 
 public class BreadBlock extends FacingBlock {
@@ -39,7 +40,7 @@ public class BreadBlock extends FacingBlock {
 
     public BreadBlock(Properties settings) {
         super(settings);
-        this.registerDefaultState(this.stateDefinition.any().setValue(BITES, 0).setValue(FACING, Direction.NORTH).setValue(JAM, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(BITES, 0).setValue(FACING, Direction.NORTH).setValue(JAM, false));
     }
 
     @Override
@@ -50,40 +51,35 @@ public class BreadBlock extends FacingBlock {
     @Override
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getItemInHand(hand);
-        Item item = itemStack.getItem();
-        if (itemStack.is(ObjectRegistry.CHERRY_JAM.get().asItem()) && !state.getValue(JAM)) {
-            if (!player.isCreative()) {
-                itemStack.shrink(1);
-            }
-            world.playSound(null, pos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0f, 1.0f);
-            world.setBlockAndUpdate(pos, state.setValue(JAM, true));
-            world.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-            player.awardStat(Stats.ITEM_USED.get(item));
-            return InteractionResult.SUCCESS;
-        }
+
         if (world.isClientSide) {
-            if (tryEat(world, pos, state, player).consumesAction()) {
+            if (tryEat(world, pos, state, player, itemStack, hand).consumesAction()) {
                 return InteractionResult.SUCCESS;
             }
             if (itemStack.isEmpty()) {
                 return InteractionResult.CONSUME;
             }
         }
-        return tryEat(world, pos, state, player);
+        return tryEat(world, pos, state, player, itemStack, hand);
     }
 
-    private static InteractionResult tryEat(LevelAccessor world, BlockPos pos, BlockState state, Player player) {
-        if (!player.canEat(false)) {
+
+    private static InteractionResult tryEat(LevelAccessor world, BlockPos pos, BlockState state, Player player, ItemStack stack, InteractionHand hand) {
+        if (!player.canEat(false) && !(stack.is(VineryTags.JAMS))) {
             return InteractionResult.PASS;
         }
-        player.awardStat(Stats.EAT_CAKE_SLICE);
-
-        if(state.getValue(JAM)) player.getFoodData().eat(4, 12.8f);
-        else player.getFoodData().eat(6, 9.6f);
+        if(stack.is(VineryTags.JAMS)){
+            BreadBlock.popResourceFromFace((Level) world, pos, Direction.UP, new ItemStack(ObjectRegistry.BREAD_SLICE.get()));
+            stack.shrink(1);
+            player.addItem(new ItemStack(ObjectRegistry.CHERRY_JAR.get()));
+        }
+        else{
+            player.getFoodData().eat(6, 0.6f);
+            player.awardStat(Stats.EAT_CAKE_SLICE);
+        }
         int i = state.getValue(BITES);
         world.gameEvent(player, GameEvent.EAT, pos);
-        world.playSound(null, pos, SoundEvents.CAKE_ADD_CANDLE, SoundSource.BLOCKS, 1.0f, 1.0f);
-
+        world.playSound(null, pos, SoundEvents.BEEHIVE_SHEAR, SoundSource.BLOCKS, 1.0f, 1.0f);
         if (i < 3) {
             world.setBlock(pos, state.setValue(BITES, i + 1), Block.UPDATE_ALL);
         } else {

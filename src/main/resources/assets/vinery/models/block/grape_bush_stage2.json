@@ -1,7 +1,6 @@
 {
 	"credit": "Made by Satisfy",
 	"ambientocclusion": false,
-	"render_type": "cutout",
 	"textures": {
 		"1": "vinery:block/grape_bush_stage2",
 		"particle": "vinery:block/grape_bush_stage2"

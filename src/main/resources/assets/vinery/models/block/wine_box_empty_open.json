@@ -1,6 +1,5 @@
 {
 	"credit": "Made by Satisfy",
-	"render_type": "translucent",
 	"textures": {
 		"0": "blocks/hay_block_top",
 		"1": "vinery:block/wine_box",

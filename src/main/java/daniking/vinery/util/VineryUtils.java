@@ -11,6 +11,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.fml.ModList;
 
 public class VineryUtils {
 
@@ -61,5 +62,9 @@ public class VineryUtils {
             buffer[1] = Shapes.empty();
         }
         return buffer[0];
+    }
+
+    public static boolean isFDLoaded(){
+        return ModList.get().isLoaded("farmersdelight");
     }
 }

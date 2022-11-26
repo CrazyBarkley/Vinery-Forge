@@ -58,6 +58,6 @@ public class WoodFiredOvenDisplay extends BasicDisplay implements SimpleGridMenu
 
     @Override
     public CategoryIdentifier<?> getCategoryIdentifier() {
-        return new WoodFiredOvenCategory().getCategoryIdentifier();
+        return WOOD_FIRED_OVEN_DISPLAY;
     }
 }
