@@ -162,7 +162,7 @@ public class ObjectRegistry {
     public static final RegistryObject<Item>  CHERRY_DOOR_ITEM = registerItem("cherry_door", () -> new BlockItem(CHERRY_DOOR.get(), getSettings()));
     public static final RegistryObject<Block> CHERRY_TRAPDOOR = register("cherry_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR)));
     public static final RegistryObject<Item>  CHERRY_TRAPDOOR_ITEM = registerItem("cherry_trapdoor", () -> new BlockItem(CHERRY_TRAPDOOR.get(), getSettings()));
-    public static final WoodType VINERY_CHERRY_WOOD_TYPE = WoodTypeAccessor.callRegister(WoodTypeAccessor.callCreate("vinery_cherry"));
+    public static final WoodType VINERY_CHERRY_WOOD_TYPE = WoodTypeAccessor.callRegister(WoodTypeAccessor.callCreate("vinery_cherry_sign"));
     public static final RegistryObject<Block> VINERY_CHERRY_SIGN = register("vinery_cherry_sign",
             () -> new StandingSignBlock(BlockBehaviour.Properties.of(Material.WOOD).noCollission().strength(1.0f).sound(SoundType.WOOD), VINERY_CHERRY_WOOD_TYPE));
     public static final RegistryObject<Block> VINERY_CHERRY_WALL_SIGN = register("vinery_cherry_wall_sign",
