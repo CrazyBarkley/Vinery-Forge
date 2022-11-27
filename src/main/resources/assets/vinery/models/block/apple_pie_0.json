@@ -1,5 +1,6 @@
 {
 	"credit": "Made by Satisfy",
+	"render_type": "cutout",
 	"textures": {
 		"5": "vinery:block/apple_pie_plate",
 		"side": "vinery:block/apple_pie_alt/apple_pie_side_yummie",

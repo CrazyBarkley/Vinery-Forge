@@ -1,5 +1,6 @@
 {
   "parent": "vinery:block/flower_pot_main",
+  "render_type": "cutout",
   "textures": {
 	"4": "vinery:block/air",
 	"5": "vinery:block/air"

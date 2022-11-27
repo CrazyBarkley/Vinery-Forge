@@ -162,12 +162,12 @@ public class ObjectRegistry {
     public static final RegistryObject<Item>  CHERRY_DOOR_ITEM = registerItem("cherry_door", () -> new BlockItem(CHERRY_DOOR.get(), getSettings()));
     public static final RegistryObject<Block> CHERRY_TRAPDOOR = register("cherry_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR)));
     public static final RegistryObject<Item>  CHERRY_TRAPDOOR_ITEM = registerItem("cherry_trapdoor", () -> new BlockItem(CHERRY_TRAPDOOR.get(), getSettings()));
-    public static final WoodType CHERRY_WOOD_TYPE = WoodTypeAccessor.callRegister(WoodTypeAccessor.callCreate("cherry"));
-    public static final RegistryObject<Block> CHERRY_SIGN = register("cherry_sign",
-            () -> new StandingSignBlock(BlockBehaviour.Properties.of(Material.WOOD).noCollission().strength(1.0f).sound(SoundType.WOOD), CHERRY_WOOD_TYPE));
-    public static final RegistryObject<Block> CHERRY_WALL_SIGN = register("cherry_wall_sign",
-            () -> new WallSignBlock(BlockBehaviour.Properties.of(Material.WOOD).noCollission().strength(1.0f).sound(SoundType.WOOD).dropsLike(CHERRY_SIGN.get()), CHERRY_WOOD_TYPE));
-    public static final RegistryObject<Item> CHERRY_SIGN_ITEM = registerItem("cherry_sign", () -> new SignItem(getSettings().stacksTo(16), CHERRY_SIGN.get(), CHERRY_WALL_SIGN.get()));
+    public static final WoodType VINERY_CHERRY_WOOD_TYPE = WoodTypeAccessor.callRegister(WoodTypeAccessor.callCreate("vinery_cherry"));
+    public static final RegistryObject<Block> VINERY_CHERRY_SIGN = register("vinery_cherry_sign",
+            () -> new StandingSignBlock(BlockBehaviour.Properties.of(Material.WOOD).noCollission().strength(1.0f).sound(SoundType.WOOD), VINERY_CHERRY_WOOD_TYPE));
+    public static final RegistryObject<Block> VINERY_CHERRY_WALL_SIGN = register("vinery_cherry_wall_sign",
+            () -> new WallSignBlock(BlockBehaviour.Properties.of(Material.WOOD).noCollission().strength(1.0f).sound(SoundType.WOOD).dropsLike(VINERY_CHERRY_SIGN.get()), VINERY_CHERRY_WOOD_TYPE));
+    public static final RegistryObject<Item> VINERY_CHERRY_SIGN_ITEM = registerItem("vinery_cherry_sign", () -> new SignItem(getSettings().stacksTo(16), VINERY_CHERRY_SIGN.get(), VINERY_CHERRY_WALL_SIGN.get()));
     public static final RegistryObject<Block> WINDOW = register("window", () -> new WindowBlock(BlockBehaviour.Properties.copy(Blocks.GLASS_PANE)));
     public static final RegistryObject<Item>  WINDOW_ITEM = registerItem("window", () -> new BlockItem(WINDOW.get(), getSettings()));
     public static final RegistryObject<Block> LOAM = register("loam", () -> new Block(BlockBehaviour.Properties.of(Material.DIRT).strength(2.0F, 3.0F).sound(SoundType.MUD)));
