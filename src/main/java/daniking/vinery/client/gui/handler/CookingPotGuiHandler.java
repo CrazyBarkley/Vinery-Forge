@@ -5,7 +5,7 @@ import daniking.vinery.registry.VineryRecipeTypes;
 import daniking.vinery.registry.VineryScreenHandlerTypes;
 import daniking.vinery.util.VineryUtils;
 import java.util.stream.Stream;
-import net.minecraft.network.FriendlyByteBuf;
+
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;

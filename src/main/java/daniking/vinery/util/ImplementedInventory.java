@@ -2,7 +2,6 @@ package daniking.vinery.util;
 
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.ContainerHelper;

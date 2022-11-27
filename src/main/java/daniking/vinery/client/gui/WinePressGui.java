@@ -2,7 +2,6 @@ package daniking.vinery.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import daniking.vinery.Vinery;
 import daniking.vinery.VineryIdentifier;
 import daniking.vinery.client.gui.handler.WinePressGuiHandler;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;

@@ -318,13 +318,6 @@ public class ObjectRegistry {
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
         BLOCKS.register(eventBus);
-        /*
-        FlammableBlockRegistry flammableRegistry = FlammableBlockRegistry.getDefaultInstance();
-        flammableRegistry.add(CHERRY_SLAB, 5, 20);
-        flammableRegistry.add(CHERRY_STAIRS, 5, 20);
-        flammableRegistry.add(CHERRY_FENCE, 5, 20);
-        flammableRegistry.add(CHERRY_FENCE_GATE, 5, 20);
-         */
     }
 
     private static Item.Properties getSettings(Consumer<Item.Properties> consumer) {

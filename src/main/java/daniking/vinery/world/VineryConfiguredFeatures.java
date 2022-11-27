@@ -2,22 +2,18 @@ package daniking.vinery.world;
 
 import com.google.common.collect.ImmutableList;
 import daniking.vinery.Vinery;
-import daniking.vinery.VineryIdentifier;
 import daniking.vinery.block.GrapeBush;
 import daniking.vinery.block.VariantLeavesBlock;
 import daniking.vinery.registry.ObjectRegistry;
 import daniking.vinery.world.feature.VineryVinesFeature;
-import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
@@ -68,13 +64,6 @@ public class VineryConfiguredFeatures {
     public static final RegistryObject<PlacedFeature> TREE_CHERRY = registerPlacedFeature("tree_cherry", () -> new PlacedFeature(CHERRY.getHolder().get(), VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.01f, 1), ObjectRegistry.CHERRY_SAPLING.get())));
     public static final RegistryObject<PlacedFeature> TREE_CHERRY_OLD = registerPlacedFeature("tree_cherry_old", () -> new PlacedFeature(OLD_CHERRY.getHolder().get(), VegetationPlacements.treePlacement(PlacementUtils.countExtra(0, 0.01f, 1), ObjectRegistry.OLD_CHERRY_SAPLING.get())));
 
-    /*
-    private static RandomPatchConfiguration getFlowerGrassConfig(Block flowerGrass) {
-        return new RandomPatchConfiguration(8, 2, 0, PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(flowerGrass.defaultBlockState())), createBlockPredicate(List.of(Blocks.GRASS_BLOCK))));
-    }
-
-     */
-    
     public static void register(IEventBus eventBus) {
         FEATURES.register(eventBus);
         CONFIGURED_FEATURES.register(eventBus);
@@ -88,17 +77,5 @@ public class VineryConfiguredFeatures {
     private static <T extends PlacedFeature> RegistryObject<T> registerPlacedFeature(String path, Supplier<T> supplier){
         return PLACED_FEATURES.register(path, supplier);
     }
- /*
-	private static Predicate<BiomeSelectionContext> getTreesSelector() {
-        return BiomeSelectors.tag(TagKey.create(Registry.BIOME_REGISTRY, new VineryIdentifier("has_structure/tree")));
-	}
-
-    private static BlockPredicate createBlockPredicate(List<Block> validGround) {
-        return !validGround.isEmpty() ? BlockPredicate.allOf(BlockPredicate, BlockPredicate.matchesBlocks(validGround)) : BlockPredicate.ONLY_IN_AIR_PREDICATE;
-    }
-
-  */
-    
-
 }
 
