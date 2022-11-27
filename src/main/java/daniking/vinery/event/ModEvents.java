@@ -84,27 +84,6 @@ public class ModEvents {
             event.put(VineryEntites.MULE.get(), Llama.createAttributes().add(Attributes.MOVEMENT_SPEED, 0.2f).build());
             event.put(VineryEntites.WANDERING_WINEMAKER.get(), WanderingWinemakerEntity.createMobAttributes().build());
         }
-
-        @SubscribeEvent
-        public static void colorHandlerBlockEvent(RegisterColorHandlersEvent.Block event) {
-            event.register((state, world, pos, tintIndex) -> {
-                if (world == null || pos == null) {
-                    return -1;
-                }
-                return BiomeColors.getAverageGrassColor(world, pos);
-            }, ObjectRegistry.GRASS_SLAB.get());
-            event.register((state, world, pos, tintIndex) -> {
-                if (world == null || pos == null) {
-                    return -1;
-                }
-                return BiomeColors.getAverageWaterColor(world, pos);
-            }, ObjectRegistry.KITCHEN_SINK.get());
-        }
-
-        @SubscribeEvent
-        public static void colorHandlerItemEvent(RegisterColorHandlersEvent.Item event) {
-            event.register((p_92672_, p_92673_) -> GrassColor.get(1.0, 0.5), ObjectRegistry.GRASS_SLAB.get().asItem());
-        }
     }
 
 
