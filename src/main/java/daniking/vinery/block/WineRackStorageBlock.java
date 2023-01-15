@@ -1,10 +1,12 @@
 package daniking.vinery.block;
 
 import daniking.vinery.block.entity.WineRackStorageBlockEntity;
+import net.minecraft.block.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.*;
 import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
@@ -21,6 +23,7 @@ import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -68,6 +71,17 @@ public class WineRackStorageBlock extends BaseEntityBlock {
 			super.onRemove(state, world, pos, newState, moved);
 		}
 	}
+/*
+	@Override
+	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+		BlockEntity blockEntity = world.getBlockEntity(pos);
+		if (blockEntity instanceof WineRackStorageBlockEntity blockEntity1) {
+			blockEntity1.tick();
+		}
+	}
+
+ */
+
 	@Nullable
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {

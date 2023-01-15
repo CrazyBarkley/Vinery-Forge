@@ -26,7 +26,6 @@ import java.util.Map;
 public class Vinery{
 
     public static final String MODID = "vinery";
-
     public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
     public static final CreativeModeTab CREATIVE_TAB = new CreativeModeTab("vinery.creative_tab") {
         @Override

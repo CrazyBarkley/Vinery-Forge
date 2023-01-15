@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.*;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -49,7 +50,7 @@ public class KitchenSinkBlock extends Block {
 		if (world.isClientSide) return InteractionResult.SUCCESS;
 		ItemStack itemStack = player.getItemInHand(hand);
 		Item item = itemStack.getItem();
-		if (item == ObjectRegistry.FAUCET.get() && !state.getValue(HAS_FAUCET)) {
+		if (item == ObjectRegistry.FAUCET && !state.getValue(HAS_FAUCET)) {
 			world.setBlock(pos, state.setValue(HAS_FAUCET, true), Block.UPDATE_ALL);
 			if (!player.isCreative())
 				itemStack.shrink(1);
@@ -57,7 +58,7 @@ public class KitchenSinkBlock extends Block {
 			return InteractionResult.SUCCESS;
 		} else if (itemStack.isEmpty() && state.getValue(HAS_FAUCET) && !state.getValue(FILLED)) {
 			world.setBlock(pos, state.setValue(HAS_FAUCET, true).setValue(FILLED, true), Block.UPDATE_ALL);
-			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), VinerySoundEvents.BLOCK_FAUCET.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), VinerySoundEvents.BLOCK_FAUCET, SoundSource.BLOCKS, 1.0f, 1.0f);
 			world.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.WATER_AMBIENT, SoundSource.BLOCKS, 1.0f, 1.0f);
 			return InteractionResult.SUCCESS;
 		} else if (item == Items.WATER_BUCKET && !state.getValue(FILLED)) {

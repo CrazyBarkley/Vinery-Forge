@@ -3,7 +3,6 @@ package daniking.vinery.block.entity;
 import daniking.vinery.client.gui.handler.WinePressGuiHandler;
 import daniking.vinery.registry.ObjectRegistry;
 import daniking.vinery.registry.VineryBlockEntityTypes;
-import daniking.vinery.util.ImplementedInventory;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -31,7 +30,7 @@ public class WinePressBlockEntity extends BlockEntity implements MenuProvider, I
     private int maxProgress = 72;
 
     public WinePressBlockEntity(BlockPos pos, BlockState state) {
-        super(VineryBlockEntityTypes.WINE_PRESS_BLOCK_ENTITY.get(), pos, state);
+        super(VineryBlockEntityTypes.WINE_PRESS_BLOCK_ENTITY, pos, state);
         this.propertyDelegate = new ContainerData() {
             public int get(int index) {
                 return switch (index) {
@@ -115,7 +114,7 @@ public class WinePressBlockEntity extends BlockEntity implements MenuProvider, I
         if(hasRecipe(entity)) {
             entity.removeItem(0, 1);
 
-            entity.setItem(1, new ItemStack(ObjectRegistry.APPLE_MASH.get(),
+            entity.setItem(1, new ItemStack(ObjectRegistry.APPLE_MASH,
                     entity.getItem(1).getCount() + 1));
 
             entity.resetProgress();
@@ -131,7 +130,7 @@ public class WinePressBlockEntity extends BlockEntity implements MenuProvider, I
         boolean hasAppleInFirstSlot = entity.getItem(0).getItem() == Items.APPLE;
 
         return hasAppleInFirstSlot && canInsertAmountIntoOutputSlot(inventory)
-                && canInsertItemIntoOutputSlot(inventory, ObjectRegistry.APPLE_MASH.get());
+                && canInsertItemIntoOutputSlot(inventory, ObjectRegistry.APPLE_MASH);
     }
 
     private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, Item output) {

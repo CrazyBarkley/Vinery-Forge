@@ -6,10 +6,8 @@ import daniking.vinery.client.gui.CookingPotGui;
 import daniking.vinery.client.gui.FermentationBarrelGui;
 import daniking.vinery.client.gui.StoveGui;
 import daniking.vinery.client.gui.WinePressGui;
-import daniking.vinery.client.render.block.WineRackRenderer;
-import daniking.vinery.client.render.entity.SimpleGeoRenderer;
+import daniking.vinery.client.render.entity.MuleRenderer;
 import daniking.vinery.client.render.entity.WanderingWinemakerRenderer;
-import daniking.vinery.client.render.feature.StrawHatRenderer;
 import daniking.vinery.item.StrawHatItem;
 import daniking.vinery.item.WinemakerArmorItem;
 import daniking.vinery.registry.ObjectRegistry;
@@ -42,13 +40,11 @@ public class ClientModEvents {
 
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event){
-        event.registerBlockEntityRenderer(VineryBlockEntityTypes.WINE_RACK_GECKO_ENTITY.get(),
-                (BlockEntityRendererProvider.Context rendererDispatcherIn) -> new WineRackRenderer());
-        event.registerEntityRenderer(VineryEntites.MULE.get(), mgr -> new SimpleGeoRenderer<>(mgr, Vinery.MODID, "wandering_mule"));
+        event.registerEntityRenderer(VineryEntites.MULE.get(), MuleRenderer::new);
+        event.registerEntityRenderer(VineryBlockEntityTypes.WINE_RACK_STORAGE_ENTITY.get(), );
         event.registerEntityRenderer(VineryEntites.WANDERING_WINEMAKER.get(), WanderingWinemakerRenderer::new);
         event.registerEntityRenderer(VineryBlockEntityTypes.CHAIR.get(), ChairRenderer::new);
 
-        GeoArmorRenderer.registerArmorRenderer(StrawHatItem.class, StrawHatRenderer::new);
     }
 
     @SubscribeEvent
@@ -57,8 +53,6 @@ public class ClientModEvents {
         MenuScreens.register(VineryScreenHandlerTypes.WINE_PRESS_SCREEN_HANDLER.get(), WinePressGui::new);
         MenuScreens.register(VineryScreenHandlerTypes.FERMENTATION_BARREL_GUI_HANDLER.get(), FermentationBarrelGui::new);
         MenuScreens.register(VineryScreenHandlerTypes.COOKING_POT_SCREEN_HANDLER.get(), CookingPotGui::new);
-
-        //TerraformBoatClientHelper.registerModelLayers(new VineryIdentifier("cherry"));
     }
 
     @SubscribeEvent

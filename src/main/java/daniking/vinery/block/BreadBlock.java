@@ -3,6 +3,7 @@ package daniking.vinery.block;
 import daniking.vinery.registry.ObjectRegistry;
 import daniking.vinery.util.VineryTags;
 import net.minecraft.ChatFormatting;
+import net.minecraft.block.*;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -21,6 +22,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -30,7 +32,6 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
 import java.util.List;
 
 public class BreadBlock extends FacingBlock {
@@ -69,9 +70,9 @@ public class BreadBlock extends FacingBlock {
             return InteractionResult.PASS;
         }
         if(stack.is(VineryTags.JAMS)){
-            BreadBlock.popResourceFromFace((Level) world, pos, Direction.UP, new ItemStack(ObjectRegistry.BREAD_SLICE.get()));
+            BreadBlock.popResourceFromFace((Level) world, pos, Direction.UP, new ItemStack(ObjectRegistry.BREAD_SLICE));
             stack.shrink(1);
-            player.addItem(new ItemStack(ObjectRegistry.CHERRY_JAR.get()));
+            player.addItem(new ItemStack(ObjectRegistry.CHERRY_JAR));
         }
         else{
             player.getFoodData().eat(6, 0.6f);

@@ -77,7 +77,7 @@ public class GrapevinePotBlock extends Block {
                 if (activeStage < MAX_STAGE) {
                     world.setBlock(pos, state.setValue(STAGE, activeStage + 1), Block.UPDATE_ALL);
                 }
-                world.playSound(null, pos, VinerySoundEvents.BLOCK_GRAPEVINE_POT_SQUEEZE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+                world.playSound(null, pos, VinerySoundEvents.BLOCK_GRAPEVINE_POT_SQUEEZE, SoundSource.BLOCKS, 1.0F, 1.0F);
             }
         }
     }
@@ -86,7 +86,7 @@ public class GrapevinePotBlock extends Block {
         final int storage = state.getValue(STORAGE);
         final int stage = state.getValue(STAGE);
         if (canTakeWine(storage) && stage == MAX_STAGE) {
-            return stackInHand.is(ObjectRegistry.WINE_BOTTLE.get().asItem());
+            return stackInHand.is(ObjectRegistry.WINE_BOTTLE.asItem());
         } else {
             return false;
         }
@@ -136,11 +136,11 @@ public class GrapevinePotBlock extends Block {
                 world.playSound(player, pos, SoundEvents.CORAL_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
             }
             return InteractionResult.SUCCESS;
-        } else if (stack.is(ObjectRegistry.WINE_BOTTLE.get().asItem())) {
+        } else if (stack.is(ObjectRegistry.WINE_BOTTLE.asItem())) {
             if (canTakeWine(state, stack)) {
                 final ItemStack output = switch (state.getValue(GRAPEVINE_TYPE)) {
-                    case RED -> new ItemStack(ObjectRegistry.RED_GRAPEJUICE_WINE_BOTTLE.get());
-                    case WHITE -> new ItemStack(ObjectRegistry.WHITE_GRAPEJUICE_WINE_BOTTLE.get());
+                    case RED -> new ItemStack(ObjectRegistry.RED_GRAPEJUICE_WINE_BOTTLE);
+                    case WHITE -> new ItemStack(ObjectRegistry.WHITE_GRAPEJUICE_WINE_BOTTLE);
                 };
                 int storage = state.getValue(STORAGE);
                 int newStorage = (storage - DECREMENT_PER_WINE_BOTTLE);

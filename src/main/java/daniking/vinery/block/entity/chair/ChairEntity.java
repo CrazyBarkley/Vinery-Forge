@@ -1,6 +1,5 @@
 package daniking.vinery.block.entity.chair;
 
-import daniking.vinery.block.entity.chair.ChairUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;

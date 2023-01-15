@@ -5,6 +5,7 @@ import daniking.vinery.recipe.FermentationBarrelRecipe;
 import daniking.vinery.registry.ObjectRegistry;
 import daniking.vinery.registry.VineryBlockEntityTypes;
 import daniking.vinery.registry.VineryRecipeTypes;
+import daniking.vinery.util.WineYears;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -62,7 +63,7 @@ public class FermentationBarrelBlockEntity extends BlockEntity implements Contai
     };
 
     public FermentationBarrelBlockEntity(BlockPos pos, BlockState state) {
-        super(VineryBlockEntityTypes.FERMENTATION_BARREL_ENTITY.get(), pos, state);
+        super(VineryBlockEntityTypes.FERMENTATION_BARREL_ENTITY, pos, state);
         this.inventory = NonNullList.withSize(CAPACITY, ItemStack.EMPTY);
     }
 
@@ -88,7 +89,7 @@ public class FermentationBarrelBlockEntity extends BlockEntity implements Contai
         if (world.isClientSide) return;
         boolean dirty = false;
         final var recipeType = world.getRecipeManager()
-                .getRecipeFor(VineryRecipeTypes.FERMENTATION_BARREL_RECIPE_TYPE.get(), blockEntity, world)
+                .getRecipeFor(VineryRecipeTypes.FERMENTATION_BARREL_RECIPE_TYPE, blockEntity, world)
                 .orElse(null);
         if (canCraft(recipeType)) {
             this.fermentationTime++;
@@ -116,7 +117,7 @@ public class FermentationBarrelBlockEntity extends BlockEntity implements Contai
             return false;
         } else {
             final Block block = Block.byItem(this.getItem(BOTTLE_INPUT_SLOT).getItem());
-            if (block != ObjectRegistry.WINE_BOTTLE.get()) {
+            if (block != ObjectRegistry.WINE_BOTTLE) {
                 return false;
             }
             return this.getItem(OUTPUT_SLOT).isEmpty();
@@ -137,9 +138,9 @@ public class FermentationBarrelBlockEntity extends BlockEntity implements Contai
         final ItemStack recipeOutput = recipe.getResultItem();
         final ItemStack outputSlotStack = this.getItem(OUTPUT_SLOT);
         if (outputSlotStack.isEmpty()) {
-            setItem(OUTPUT_SLOT, recipeOutput.copy());
-        } else if (outputSlotStack.is(recipeOutput.getItem())) {
-            outputSlotStack.grow(recipeOutput.getCount());
+            ItemStack output = recipeOutput.copy();
+            WineYears.setWineYear(output, this.level);
+            setItem(OUTPUT_SLOT, output);
         }
         // Decrement bottles
         final ItemStack bottle = this.getItem(BOTTLE_INPUT_SLOT);
